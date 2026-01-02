@@ -18,8 +18,7 @@
     
     
     <title>JavaWeb 笔记(补) | 油炸小龙虾刺身</title>
-	<link rel="shortcut icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://bakasine.github.io" rel="prefetch" />
 
     
@@ -64,7 +63,7 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 7.0.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -176,20 +175,20 @@
 <li><a href="#jsp">JSP</a></li>
 <li><a href="#jdbc">JDBC</a></li>
 </ul>
-<h3 id="h2-id-servlet-Servlet-配置-h2"><h2 id="servlet">Servlet 配置</h2></h3>
+<h3 id="h2-idservletservlet-配置h2"><a class="markdownIt-Anchor" href="#h2-idservletservlet-配置h2"></a> <h2 id="servlet">Servlet 配置</h2></h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletName&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-<span class="keyword">class</span>&gt;package.ServletName&lt;/servlet-<span class="keyword">class</span>&gt;</span><br><span class="line">    // 可选, 使 Servlet 在服务器启动时就创建, 根据 n(n &gt; <span class="number">0</span>) 的值从小到大开始</span><br><span class="line">    &lt;load-on-startup&gt;n&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletName&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/urlName&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">// 表单传递</span><br><span class="line">&lt;form action=<span class="string">&quot;urlName&quot;</span>&gt;</span><br><span class="line">    &lt;<span class="built_in">input</span> <span class="built_in">type</span>=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;valueName&quot;</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Servlet-Config">Servlet Config</h3>
+<h3 id="servlet-config"><a class="markdownIt-Anchor" href="#servlet-config"></a> Servlet Config</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 获取表单参数</span><br><span class="line">String <span class="built_in">str</span> = request.getParameter(<span class="string">&quot;valueName&quot;</span>);</span><br><span class="line"></span><br><span class="line">// 参数放入暂存区</span><br><span class="line">request.setAttribute(<span class="string">&quot;number&quot;</span>, <span class="built_in">str</span>);</span><br><span class="line"></span><br><span class="line">// 从暂存区取出参数</span><br><span class="line">String <span class="built_in">str</span> = (String) request.getAttribute(<span class="string">&quot;number&quot;</span>);</span><br><span class="line">// 从暂存区删除删除</span><br><span class="line">request.removeAttribute(<span class="string">&quot;number&quot;</span>);</span><br><span class="line"></span><br><span class="line">// 配置文件配置公共参数, 定义的参数在 JSP 中也能调用</span><br><span class="line">&lt;web-app&gt;</span><br><span class="line">    &lt;context-param&gt;</span><br><span class="line">        &lt;param-name&gt;name&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;value&lt;/param-value&gt;</span><br><span class="line">    &lt;/context-param&gt;</span><br><span class="line">&lt;/web-app&gt;</span><br><span class="line"></span><br><span class="line">// 获取公共参数</span><br><span class="line">String value = getInitParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line"></span><br><span class="line">// 跳转到 servletName , 地址栏中的地址不变</span><br><span class="line">request.getRequestDispatcher(<span class="string">&quot;servletName&quot;</span>).forward(request, response);</span><br><span class="line">// 运行(不跳转) servletName 后继续运行原 Servlet</span><br><span class="line">request.getRequestDispatcher(<span class="string">&quot;servletName&quot;</span>).include(request, response);</span><br><span class="line">// 重定向到 servletName , 地址栏中的地址改变</span><br><span class="line">request.sendRedirect(<span class="string">&quot;servletName&quot;</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="h2-id-fal-Filter-Listener-h2"><h2 id="fal">Filter / Listener</h2></h3>
+<h3 id="h2-idfalfilter-listenerh2"><a class="markdownIt-Anchor" href="#h2-idfalfilter-listenerh2"></a> <h2 id="fal">Filter / Listener</h2></h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 配置文件配置参数</span><br><span class="line">&lt;<span class="built_in">filter</span>&gt;</span><br><span class="line">    &lt;<span class="built_in">filter</span>-name&gt;name&lt;/<span class="built_in">filter</span>-name&gt;</span><br><span class="line">    &lt;<span class="built_in">filter</span>-<span class="keyword">class</span>&gt;package.filterClass&lt;/<span class="built_in">filter</span>-<span class="keyword">class</span>&gt;</span><br><span class="line">&lt;/<span class="built_in">filter</span>&gt;</span><br><span class="line">&lt;<span class="built_in">filter</span>-mapping&gt;</span><br><span class="line">    &lt;<span class="built_in">filter</span>-name&gt;name&lt;/<span class="built_in">filter</span>-name&gt;</span><br><span class="line">    // 过滤器作用的对象</span><br><span class="line">    &lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;</span><br><span class="line">&lt;/<span class="built_in">filter</span>-mapping&gt;</span><br><span class="line"></span><br><span class="line">&lt;listener&gt;</span><br><span class="line">    &lt;listener-<span class="keyword">class</span>&gt;package.listener&lt;/listener-<span class="keyword">class</span>&gt;</span><br><span class="line">&lt;/listener&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="h2-id-jsp-JSP-h2"><h2 id="jsp">JSP</h2></h3>
+<h3 id="h2-idjspjsph2"><a class="markdownIt-Anchor" href="#h2-idjspjsph2"></a> <h2 id="jsp">JSP</h2></h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// JSP 指令 &lt;%@ 指令名 key1=<span class="string">&quot;value1&quot;</span> key2=<span class="string">&quot;value2&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*, java.lang.*&quot;</span> pageEncoding=<span class="string">&quot;utf-8&quot;</span> %&gt;</span><br><span class="line"></span><br><span class="line">// JSP 代码段</span><br><span class="line">// 存在 Servlet 的 Service 方法内, 每次刷新页面重新定义</span><br><span class="line">// 不能定义方法</span><br><span class="line">&lt;% <span class="built_in">int</span> i = <span class="number">1</span>; %&gt;</span><br><span class="line"></span><br><span class="line">// JSP 表达式</span><br><span class="line">&lt;%= i %&gt;</span><br><span class="line"></span><br><span class="line">// JSP 定义区</span><br><span class="line">// 存在 Servlet 内作为其属性, 刷新页面不会重新定义</span><br><span class="line">// 可以定义方法</span><br><span class="line">&lt;%! <span class="built_in">int</span> i = <span class="number">2</span>; %&gt;</span><br><span class="line"></span><br><span class="line">// JSP 注释</span><br><span class="line">&lt;%--  --%&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="JSTL-标签库">JSTL 标签库</h3>
+<h3 id="jstl-标签库"><a class="markdownIt-Anchor" href="#jstl-标签库"></a> JSTL 标签库</h3>
 <ul>
 <li>需要的 jar 包 : JSTL 包</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">// jsp 文件导入 jstl 标签库</span><br><span class="line">&lt;%@ taglib uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix=<span class="string">&quot;c&quot;</span>%&gt;</span><br><span class="line"></span><br><span class="line">// c:forEach</span><br><span class="line">// items 集合对象, var 每一次值存放的变量</span><br><span class="line">&lt;c:forEach items=<span class="string">&quot;$&#123;&#125;&quot;</span> var=<span class="string">&quot;$&#123;var&#125;&quot;</span> begin=<span class="string">&quot;&quot;</span> end=<span class="string">&quot;&quot;</span>&gt;</span><br><span class="line">    &lt;c:out value=<span class="string">&quot;$&#123;var&#125;&quot;</span> /&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line"></span><br><span class="line">// c:forTokens</span><br><span class="line">// delims -&gt; 分隔符</span><br><span class="line">&lt;c:forTokens items=<span class="string">&quot;&quot;</span> delims=<span class="string">&quot;&quot;</span> var=<span class="string">&quot;$&#123;var&#125;&quot;</span>&gt;</span><br><span class="line">    &lt;c:out value=<span class="string">&quot;$&#123;var&#125;&quot;</span> /&gt;</span><br><span class="line">&lt;/c:forTokens&gt;</span><br><span class="line"></span><br><span class="line">// c:<span class="built_in">set</span> 存放数据</span><br><span class="line">&lt;c:<span class="built_in">set</span> var=<span class="string">&quot;key&quot;</span> value=<span class="string">&quot;value&quot;</span>&gt;</span><br><span class="line">// 存放 Map 及对象, target 是 Map 则 <span class="built_in">property</span> 指定的是 key, 是对象则 <span class="built_in">property</span> 指定的是对象的属性</span><br><span class="line">&lt;c:<span class="built_in">set</span> target=<span class="string">&quot;$&#123;&#125;&quot;</span> <span class="built_in">property</span>=<span class="string">&quot;name&quot;</span> value=<span class="string">&quot;value&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">// c:remove</span><br><span class="line">&lt;c:remove var=<span class="string">&quot;&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">// c:out 类似 &lt;%= %&gt;</span><br><span class="line">&lt;c:out value=<span class="string">&quot;$&#123;key&#125;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">// c:catch 获取错误信息并存放到变量里</span><br><span class="line">&lt;c:catch var=<span class="string">&quot;&quot;</span>&gt;Exception&lt;/c:catch&gt;</span><br><span class="line"></span><br><span class="line">// c:<span class="keyword">if</span> 即 <span class="keyword">if</span> 语句 test -&gt; 条件</span><br><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;&#125;&quot;</span>&gt;&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">// c:choose 类似 switch 语句, c:when 类似 <span class="keyword">case</span>, c:otherwise 类似 default</span><br><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">&quot;&quot;</span>&gt;</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;</span><br><span class="line">    &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">// c:redirect 重定向</span><br><span class="line">&lt;c:redirect url=<span class="string">&quot;&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line">// c:url 将 URL 地址格式化为一个字符串</span><br><span class="line">&lt;c:url var=<span class="string">&quot;&quot;</span> url=<span class="string">&quot;&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="h2-id-jdbc-JDBC-h2"><h2 id="jdbc">JDBC</h2></h3>
+<h3 id="h2-idjdbcjdbch2"><a class="markdownIt-Anchor" href="#h2-idjdbcjdbch2"></a> <h2 id="jdbc">JDBC</h2></h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">private String JDBC_URL = <span class="string">&quot;jdbc:mysql:///database_name&quot;</span>;</span><br><span class="line">private String USERNAME = <span class="string">&quot;username&quot;</span>;</span><br><span class="line">private String PASSWORD = <span class="string">&quot;password&quot;</span>;</span><br><span class="line">// 使用 ? 作为占位符</span><br><span class="line">private String SQL = <span class="string">&quot;select * from table where id = ?&quot;</span> </span><br><span class="line"></span><br><span class="line">// 检查驱动是否存在</span><br><span class="line">Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line">// 获取连接</span><br><span class="line">Connection conn = DriverManager.gerConnection(JDBC_URL, USERNAME, PASSWORD;</span><br><span class="line">// 读取 SQL 语句 </span><br><span class="line">PreparedStatement ps = conn.prepareStatement(SQL);</span><br><span class="line">// 按输入的数据类型选择方法, <span class="number">1</span> 代表第一个 ？</span><br><span class="line">ps.setString(<span class="number">1</span>, <span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">// 增删改</span><br><span class="line">ps.executeUpdate();</span><br><span class="line"></span><br><span class="line">// 查</span><br><span class="line">// 使用 ResultSet 保存取出来的数据</span><br><span class="line">ResultSet rs = ps.executeQuery();</span><br><span class="line">// 遍历 ResultSet 获取数据, 每次一条</span><br><span class="line"><span class="keyword">while</span> (rs.<span class="built_in">next</span>()) &#123;</span><br><span class="line">    <span class="built_in">int</span> sqlCol = rs.setInt(<span class="string">&quot;sql_col&quot;</span>);</span><br><span class="line">    String sqlColName = rs.setString(<span class="string">&quot;sql_col_name&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 </article>
@@ -252,7 +251,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2099/01/01/aq-collection/">合订本</a>
+                    <a href="/2026/01/02/mihomo/">Mihomo 裸核运行</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2026/01/02/vaultwarden/">自建 Vaultwarden 密码管理</a>
                 </span>
             </li>
             
@@ -304,12 +309,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -328,19 +327,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2099/01/01/aq-collection/">合订本</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/08/19/auto-script/">简单的自动抢购脚本编写方法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/06/05/crypto/">发行自己的加密货币并上架去中心交易所</a>
+                    <a href="/2023/02/26/ai-voice/">搭建 AI 语音 TTS 服务</a>
                 </span>
             </li>
             
@@ -358,31 +345,43 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/10/25/interview/">面试相关记录</a>
+                    <a href="/2018/10/15/git-note/">Git学习</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/03/10/kamifaka/">搭建自动发卡平台</a>
+                    <a href="/2024/12/03/intranet/">通过 ZeroTier 将多台设备组成内网</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2024/02/12/monero-wallet/">门罗币类钱包挖矿使用指北</a>
+                    <a href="/2026/01/02/mihomo/">Mihomo 裸核运行</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/04/30/search-danmuku/">B站下架视频搜索和弹幕获取</a>
+                    <a href="/2024/01/16/openwrt/">N1 盒子 Openwrt 系统刷入</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/04/06/segment-anything/">Meta AI开源抠图模型使用</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/04/07/sms-forward/">备用手机短信转发方案</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2026/01/02/vaultwarden/">自建 Vaultwarden 密码管理</a>
                 </span>
             </li>
             
@@ -415,117 +414,123 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/ai/" style="font-size: 18.867076713253105px;" class="tag-cloud-link">ai</a>
+    <a href="/tags/qa/" style="font-size: 10.339331264725761px;" class="tag-cloud-link">qa</a>
     
-    <a href="/tags/vits/" style="font-size: 13.650578075316142px;" class="tag-cloud-link">vits</a>
+    <a href="/tags/ai/" style="font-size: 8.667883232010405px;" class="tag-cloud-link">ai</a>
     
-    <a href="/tags/qa/" style="font-size: 14.77916535595546px;" class="tag-cloud-link">qa</a>
+    <a href="/tags/vits/" style="font-size: 10.82917406137895px;" class="tag-cloud-link">vits</a>
     
-    <a href="/tags/linux/" style="font-size: 10.14261546896202px;" class="tag-cloud-link">linux</a>
+    <a href="/tags/linux/" style="font-size: 12.28146707189491px;" class="tag-cloud-link">linux</a>
     
-    <a href="/tags/shell/" style="font-size: 17.667033838467994px;" class="tag-cloud-link">shell</a>
+    <a href="/tags/shell/" style="font-size: 10.286479963687093px;" class="tag-cloud-link">shell</a>
     
-    <a href="/tags/nodejs/" style="font-size: 16.669512306253083px;" class="tag-cloud-link">nodejs</a>
+    <a href="/tags/nodejs/" style="font-size: 8.555378021393732px;" class="tag-cloud-link">nodejs</a>
     
-    <a href="/tags/bbr/" style="font-size: 17.843404750627514px;" class="tag-cloud-link">bbr</a>
+    <a href="/tags/bbr/" style="font-size: 13.35664360976825px;" class="tag-cloud-link">bbr</a>
     
-    <a href="/tags/clash/" style="font-size: 13.026152146259331px;" class="tag-cloud-link">clash</a>
+    <a href="/tags/clash/" style="font-size: 16.534482685243383px;" class="tag-cloud-link">clash</a>
     
-    <a href="/tags/cfw/" style="font-size: 15.728338409743689px;" class="tag-cloud-link">cfw</a>
+    <a href="/tags/cfw/" style="font-size: 13.279369411810851px;" class="tag-cloud-link">cfw</a>
     
-    <a href="/tags/note/" style="font-size: 11.811879091253175px;" class="tag-cloud-link">note</a>
+    <a href="/tags/dota2/" style="font-size: 16.55306306914656px;" class="tag-cloud-link">dota2</a>
     
-    <a href="/tags/crypto/" style="font-size: 10.158698831769161px;" class="tag-cloud-link">crypto</a>
+    <a href="/tags/rpg/" style="font-size: 19.75202546483951px;" class="tag-cloud-link">rpg</a>
     
-    <a href="/tags/contract/" style="font-size: 16.749658737077592px;" class="tag-cloud-link">contract</a>
+    <a href="/tags/ffmpeg/" style="font-size: 16.150922602748807px;" class="tag-cloud-link">ffmpeg</a>
     
-    <a href="/tags/dota2/" style="font-size: 9.215603664292644px;" class="tag-cloud-link">dota2</a>
+    <a href="/tags/frp/" style="font-size: 15.862620269423175px;" class="tag-cloud-link">frp</a>
     
-    <a href="/tags/rpg/" style="font-size: 11.923641120709602px;" class="tag-cloud-link">rpg</a>
+    <a href="/tags/sim/" style="font-size: 13.169487081965705px;" class="tag-cloud-link">sim</a>
     
-    <a href="/tags/ffmpeg/" style="font-size: 17.493155245900887px;" class="tag-cloud-link">ffmpeg</a>
+    <a href="/tags/note/" style="font-size: 14.936430480645425px;" class="tag-cloud-link">note</a>
     
-    <a href="/tags/frp/" style="font-size: 13.093766631228473px;" class="tag-cloud-link">frp</a>
+    <a href="/tags/crypto/" style="font-size: 11.305116268929051px;" class="tag-cloud-link">crypto</a>
     
-    <a href="/tags/sim/" style="font-size: 10.403719306407151px;" class="tag-cloud-link">sim</a>
+    <a href="/tags/contract/" style="font-size: 16.00457787364754px;" class="tag-cloud-link">contract</a>
     
-    <a href="/tags/git/" style="font-size: 10.548920267565613px;" class="tag-cloud-link">git</a>
+    <a href="/tags/prometheus/" style="font-size: 18.400375166639765px;" class="tag-cloud-link">prometheus</a>
     
-    <a href="/tags/prometheus/" style="font-size: 17.91451860207935px;" class="tag-cloud-link">prometheus</a>
+    <a href="/tags/grafana/" style="font-size: 18.308529866644662px;" class="tag-cloud-link">grafana</a>
     
-    <a href="/tags/grafana/" style="font-size: 8.609420647204878px;" class="tag-cloud-link">grafana</a>
+    <a href="/tags/docker/" style="font-size: 8.388318142788538px;" class="tag-cloud-link">docker</a>
     
-    <a href="/tags/docker/" style="font-size: 10.602828374236616px;" class="tag-cloud-link">docker</a>
+    <a href="/tags/hexo/" style="font-size: 16.014498435092413px;" class="tag-cloud-link">hexo</a>
     
-    <a href="/tags/hexo/" style="font-size: 19.035664777760324px;" class="tag-cloud-link">hexo</a>
+    <a href="/tags/github/" style="font-size: 12.21017977991179px;" class="tag-cloud-link">github</a>
     
-    <a href="/tags/github/" style="font-size: 8.344542777333988px;" class="tag-cloud-link">github</a>
+    <a href="/tags/git/" style="font-size: 12.551692349084046px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/danmu/" style="font-size: 14.714884692160439px;" class="tag-cloud-link">danmu</a>
+    <a href="/tags/danmu/" style="font-size: 14.898289210455399px;" class="tag-cloud-link">danmu</a>
     
-    <a href="/tags/image/" style="font-size: 10.514105715488775px;" class="tag-cloud-link">image</a>
+    <a href="/tags/image/" style="font-size: 9.446925056701154px;" class="tag-cloud-link">image</a>
     
-    <a href="/tags/interview/" style="font-size: 17.88968144411519px;" class="tag-cloud-link">interview</a>
+    <a href="/tags/interview/" style="font-size: 13.2709784369185px;" class="tag-cloud-link">interview</a>
     
-    <a href="/tags/zerotier/" style="font-size: 15.43795653783012px;" class="tag-cloud-link">zerotier</a>
+    <a href="/tags/zerotier/" style="font-size: 12.30012637227432px;" class="tag-cloud-link">zerotier</a>
     
-    <a href="/tags/web/" style="font-size: 16.375890726055943px;" class="tag-cloud-link">web</a>
+    <a href="/tags/web/" style="font-size: 14.693142382593393px;" class="tag-cloud-link">web</a>
     
-    <a href="/tags/lua/" style="font-size: 17.64953071913529px;" class="tag-cloud-link">lua</a>
+    <a href="/tags/mac/" style="font-size: 14.60983754956354px;" class="tag-cloud-link">mac</a>
     
-    <a href="/tags/mac/" style="font-size: 8.379867267410305px;" class="tag-cloud-link">mac</a>
+    <a href="/tags/issue/" style="font-size: 19.09157648309814px;" class="tag-cloud-link">issue</a>
     
-    <a href="/tags/issue/" style="font-size: 11.31005408258984px;" class="tag-cloud-link">issue</a>
+    <a href="/tags/email/" style="font-size: 8.742777963742634px;" class="tag-cloud-link">email</a>
     
-    <a href="/tags/mining/" style="font-size: 13.073107436722946px;" class="tag-cloud-link">mining</a>
+    <a href="/tags/lua/" style="font-size: 11.962134434392095px;" class="tag-cloud-link">lua</a>
     
-    <a href="/tags/email/" style="font-size: 14.125093445522339px;" class="tag-cloud-link">email</a>
+    <a href="/tags/mihomo/" style="font-size: 16.060068044854056px;" class="tag-cloud-link">mihomo</a>
     
-    <a href="/tags/zephyr/" style="font-size: 11.24637222937291px;" class="tag-cloud-link">zephyr</a>
+    <a href="/tags/nssm/" style="font-size: 18.334919171717615px;" class="tag-cloud-link">nssm</a>
     
-    <a href="/tags/xmrig/" style="font-size: 9.972306150803906px;" class="tag-cloud-link">xmrig</a>
+    <a href="/tags/mining/" style="font-size: 14.256447719071021px;" class="tag-cloud-link">mining</a>
     
-    <a href="/tags/monero/" style="font-size: 10.776553148843234px;" class="tag-cloud-link">monero</a>
+    <a href="/tags/zephyr/" style="font-size: 13.036682410787938px;" class="tag-cloud-link">zephyr</a>
     
-    <a href="/tags/netch/" style="font-size: 18.58772317116041px;" class="tag-cloud-link">netch</a>
+    <a href="/tags/xmrig/" style="font-size: 8.379963729899542px;" class="tag-cloud-link">xmrig</a>
     
-    <a href="/tags/openwrt/" style="font-size: 9.821782091026133px;" class="tag-cloud-link">openwrt</a>
+    <a href="/tags/monero/" style="font-size: 8.768080877371144px;" class="tag-cloud-link">monero</a>
     
-    <a href="/tags/openclash/" style="font-size: 13.163476458634712px;" class="tag-cloud-link">openclash</a>
+    <a href="/tags/netch/" style="font-size: 19.490012541807186px;" class="tag-cloud-link">netch</a>
     
-    <a href="/tags/oracle/" style="font-size: 11.800630237526118px;" class="tag-cloud-link">oracle</a>
+    <a href="/tags/openwrt/" style="font-size: 11.595876211990138px;" class="tag-cloud-link">openwrt</a>
     
-    <a href="/tags/paypal/" style="font-size: 19.293271272670218px;" class="tag-cloud-link">paypal</a>
+    <a href="/tags/openclash/" style="font-size: 10.736084244937384px;" class="tag-cloud-link">openclash</a>
     
-    <a href="/tags/quantumultx/" style="font-size: 11.53611266570903px;" class="tag-cloud-link">quantumultx</a>
+    <a href="/tags/oracle/" style="font-size: 11.920186727983952px;" class="tag-cloud-link">oracle</a>
     
-    <a href="/tags/ios/" style="font-size: 15.167650897528958px;" class="tag-cloud-link">ios</a>
+    <a href="/tags/paypal/" style="font-size: 11.220131650403912px;" class="tag-cloud-link">paypal</a>
     
-    <a href="/tags/debian/" style="font-size: 13.338764144419757px;" class="tag-cloud-link">debian</a>
+    <a href="/tags/quantumultx/" style="font-size: 19.01477097295217px;" class="tag-cloud-link">quantumultx</a>
     
-    <a href="/tags/ubuntu/" style="font-size: 8.725510931358114px;" class="tag-cloud-link">ubuntu</a>
+    <a href="/tags/ios/" style="font-size: 15.146401668565595px;" class="tag-cloud-link">ios</a>
     
-    <a href="/tags/regex/" style="font-size: 15.783445614854466px;" class="tag-cloud-link">regex</a>
+    <a href="/tags/debian/" style="font-size: 10.681697666807812px;" class="tag-cloud-link">debian</a>
     
-    <a href="/tags/cutout/" style="font-size: 14.124686486170223px;" class="tag-cloud-link">cutout</a>
+    <a href="/tags/ubuntu/" style="font-size: 17.722337384693063px;" class="tag-cloud-link">ubuntu</a>
     
-    <a href="/tags/sms/" style="font-size: 10.750926662512171px;" class="tag-cloud-link">sms</a>
+    <a href="/tags/regex/" style="font-size: 13.905149286485063px;" class="tag-cloud-link">regex</a>
     
-    <a href="/tags/SSR/" style="font-size: 13.338715727751941px;" class="tag-cloud-link">SSR</a>
+    <a href="/tags/cutout/" style="font-size: 10.914838146877132px;" class="tag-cloud-link">cutout</a>
     
-    <a href="/tags/trojan/" style="font-size: 16.396296935168483px;" class="tag-cloud-link">trojan</a>
+    <a href="/tags/sms/" style="font-size: 15.500044188499103px;" class="tag-cloud-link">sms</a>
     
-    <a href="/tags/xray/" style="font-size: 15.206343684014158px;" class="tag-cloud-link">xray</a>
+    <a href="/tags/SSR/" style="font-size: 12.029192633104781px;" class="tag-cloud-link">SSR</a>
     
-    <a href="/tags/tools/" style="font-size: 17.573504782954043px;" class="tag-cloud-link">tools</a>
+    <a href="/tags/top/" style="font-size: 12.240015533767053px;" class="tag-cloud-link">top</a>
     
-    <a href="/tags/vim/" style="font-size: 9.785507848063624px;" class="tag-cloud-link">vim</a>
+    <a href="/tags/trojan/" style="font-size: 16.493911832795426px;" class="tag-cloud-link">trojan</a>
     
-    <a href="/tags/vmess/" style="font-size: 13.555430810996118px;" class="tag-cloud-link">vmess</a>
+    <a href="/tags/xray/" style="font-size: 11.688659142369849px;" class="tag-cloud-link">xray</a>
     
-    <a href="/tags/vless/" style="font-size: 9.221847473721233px;" class="tag-cloud-link">vless</a>
+    <a href="/tags/tools/" style="font-size: 12.033628479761324px;" class="tag-cloud-link">tools</a>
     
-    <a href="/tags/top/" style="font-size: 10.018892687855505px;" class="tag-cloud-link">top</a>
+    <a href="/tags/vaultwarden/" style="font-size: 15.79549896127439px;" class="tag-cloud-link">vaultwarden</a>
+    
+    <a href="/tags/vim/" style="font-size: 17.01456859740065px;" class="tag-cloud-link">vim</a>
+    
+    <a href="/tags/vmess/" style="font-size: 12.32743486572619px;" class="tag-cloud-link">vmess</a>
+    
+    <a href="/tags/vless/" style="font-size: 8.370440400991516px;" class="tag-cloud-link">vless</a>
     
 </div>
                 
@@ -621,8 +626,8 @@
 
 </script>
 <script>
-	POWERMODE.colorful = 'true';    // make power mode colorful
-	POWERMODE.shake = 'true';       // turn off shake
+  POWERMODE.colorful = 'true';    // make power mode colorful
+  POWERMODE.shake = 'true';          // enable/disable shake
 	// TODO 这里根据具体情况修改
 	document.body.addEventListener('input', POWERMODE);
 </script>

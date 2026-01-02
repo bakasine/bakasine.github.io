@@ -18,8 +18,7 @@
     
     
     <title>MacBook(M1)遇到的问题 | 油炸小龙虾刺身</title>
-	<link rel="shortcut icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://bakasine.github.io" rel="prefetch" />
 
     
@@ -64,7 +63,7 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 7.0.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -156,14 +155,11 @@
         </div>
         <div class="tag-article">
             
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
                 
-                <a href="/tags/mac/">mac</a>, 
+                <span class="label label-gal"><i class="fa fa-tag"></i> <a href="/tags/mac/">mac</a></span>
                 
-                <a href="/tags/issue/">issue</a>
+                <span class="label label-gal"><i class="fa fa-tag"></i> <a href="/tags/issue/">issue</a></span>
                 
-            </span>
             
             <span class="label label-gal">
                 <i class="fa fa-calendar"></i> 2021-10-09
@@ -184,11 +180,10 @@
             </p>
             <p>
                 
-                <i class="fa fa-tags"></i>
                 
-                <a href="/tags/mac/">mac</a>, 
+                <i class="fa fa-tag"></i> <a href="/tags/mac/">mac</a>
                 
-                <a href="/tags/issue/">issue</a>
+                <i class="fa fa-tag"></i> <a href="/tags/issue/">issue</a>
                 
                 
                 
@@ -201,17 +196,17 @@
 <li><a href="#mysql">MySQL问题</a></li>
 <li><a href="#docker">Docker问题</a></li>
 </ul>
-<h3 id="h2-id-omz-Oh-My-Zsh问题-h2"><h2 id="omz">Oh-My-Zsh问题</h2></h3>
+<h3 id="h2-idomzoh-my-zsh问题h2"><a class="markdownIt-Anchor" href="#h2-idomzoh-my-zsh问题h2"></a> <h2 id="omz">Oh-My-Zsh问题</h2></h3>
 <ul>
 <li>终端启动速度慢</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 注释掉.zshrc的这段写入, zprofile越来越大会导致写入速度巨慢</span><br><span class="line">echo &#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27; &gt;&gt; ~/.zprofile</span><br></pre></td></tr></table></figure>
-<h3 id="h2-id-mysql-MySQL-h2"><h2 id="mysql">MySQL</h2></h3>
+<h3 id="h2-idmysqlmysqlh2"><a class="markdownIt-Anchor" href="#h2-idmysqlmysqlh2"></a> <h2 id="mysql">MySQL</h2></h3>
 <ul>
 <li>通过docker安装mysql</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// mysql 暂不支持 arm架构，所以选用 mysql-server</span><br><span class="line">docker pull mysql/mysql-server</span><br><span class="line"></span><br><span class="line">docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql/mysql-server</span><br><span class="line"></span><br><span class="line">// 因为只有8.0的版本支持arm架构，所以需要修改配置后才能通过 navicat 连接</span><br><span class="line">docker <span class="built_in">exec</span> -it mysql mysql -uroot -p</span><br><span class="line"></span><br><span class="line">use mysql;</span><br><span class="line"></span><br><span class="line">update user <span class="built_in">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user=<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-<h3 id="h2-id-docker-Docker-h2"><h2 id="docker">Docker</h2></h3>
+<h3 id="h2-iddockerdockerh2"><a class="markdownIt-Anchor" href="#h2-iddockerdockerh2"></a> <h2 id="docker">Docker</h2></h3>
 <ul>
 <li>通过docker安装nginx</li>
 </ul>
@@ -277,7 +272,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2099/01/01/aq-collection/">合订本</a>
+                    <a href="/2026/01/02/mihomo/">Mihomo 裸核运行</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2026/01/02/vaultwarden/">自建 Vaultwarden 密码管理</a>
                 </span>
             </li>
             
@@ -329,12 +330,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -353,19 +348,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2022/09/27/bbr/">bbr加速</a>
+                    <a href="/2023/03/27/history-danmu/">找到B站下架视频历史弹幕</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/04/02/globe-sim/">菲律宾Globe零月租手机卡申请和保号</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2024/12/03/intranet/">通过 ZeroTier 将多台设备组成内网</a>
+                    <a href="/2023/10/25/interview/">面试相关记录</a>
                 </span>
             </li>
             
@@ -377,7 +366,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2022/09/10/lua-note/">lua笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/11/27/mining-xmrig/">CPU 挖矿工具 XMRIG 编译安装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2024/02/12/monero-wallet/">门罗币类钱包挖矿使用指北</a>
                 </span>
             </li>
             
@@ -395,13 +396,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/28/server-speeder/">锐速</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/04/07/sms-forward/">备用手机短信转发方案</a>
+                    <a href="/2020/02/23/v2ray/">V2Ray+WebSocket+TLS+Nginx一键安装脚本</a>
                 </span>
             </li>
             
@@ -440,117 +435,123 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/ai/" style="font-size: 13.870211667472617px;" class="tag-cloud-link">ai</a>
+    <a href="/tags/qa/" style="font-size: 11.479338169987427px;" class="tag-cloud-link">qa</a>
     
-    <a href="/tags/vits/" style="font-size: 13.423526579017786px;" class="tag-cloud-link">vits</a>
+    <a href="/tags/ai/" style="font-size: 11.707251488947586px;" class="tag-cloud-link">ai</a>
     
-    <a href="/tags/qa/" style="font-size: 9.150651743984376px;" class="tag-cloud-link">qa</a>
+    <a href="/tags/vits/" style="font-size: 16.630482777196356px;" class="tag-cloud-link">vits</a>
     
-    <a href="/tags/linux/" style="font-size: 9.298050713280542px;" class="tag-cloud-link">linux</a>
+    <a href="/tags/linux/" style="font-size: 8.928487625564584px;" class="tag-cloud-link">linux</a>
     
-    <a href="/tags/shell/" style="font-size: 9.795805663506883px;" class="tag-cloud-link">shell</a>
+    <a href="/tags/shell/" style="font-size: 13.455811796987536px;" class="tag-cloud-link">shell</a>
     
-    <a href="/tags/nodejs/" style="font-size: 14.285516835252192px;" class="tag-cloud-link">nodejs</a>
+    <a href="/tags/nodejs/" style="font-size: 8.793622683372517px;" class="tag-cloud-link">nodejs</a>
     
-    <a href="/tags/bbr/" style="font-size: 10.147829369868319px;" class="tag-cloud-link">bbr</a>
+    <a href="/tags/bbr/" style="font-size: 18.57098129226484px;" class="tag-cloud-link">bbr</a>
     
-    <a href="/tags/clash/" style="font-size: 10.647454133717016px;" class="tag-cloud-link">clash</a>
+    <a href="/tags/clash/" style="font-size: 17.789811322681473px;" class="tag-cloud-link">clash</a>
     
-    <a href="/tags/cfw/" style="font-size: 19.43921644407889px;" class="tag-cloud-link">cfw</a>
+    <a href="/tags/cfw/" style="font-size: 14.003740347778036px;" class="tag-cloud-link">cfw</a>
     
-    <a href="/tags/note/" style="font-size: 15.404835679827407px;" class="tag-cloud-link">note</a>
+    <a href="/tags/dota2/" style="font-size: 8.937920954880205px;" class="tag-cloud-link">dota2</a>
     
-    <a href="/tags/crypto/" style="font-size: 15.162791169699034px;" class="tag-cloud-link">crypto</a>
+    <a href="/tags/rpg/" style="font-size: 15.825149820979348px;" class="tag-cloud-link">rpg</a>
     
-    <a href="/tags/contract/" style="font-size: 11.143191729966313px;" class="tag-cloud-link">contract</a>
+    <a href="/tags/ffmpeg/" style="font-size: 10.889643992950823px;" class="tag-cloud-link">ffmpeg</a>
     
-    <a href="/tags/dota2/" style="font-size: 14.919189857465373px;" class="tag-cloud-link">dota2</a>
+    <a href="/tags/frp/" style="font-size: 16.71470899863578px;" class="tag-cloud-link">frp</a>
     
-    <a href="/tags/rpg/" style="font-size: 13.864611641830365px;" class="tag-cloud-link">rpg</a>
+    <a href="/tags/sim/" style="font-size: 16.18591046478369px;" class="tag-cloud-link">sim</a>
     
-    <a href="/tags/ffmpeg/" style="font-size: 10.341535386346422px;" class="tag-cloud-link">ffmpeg</a>
+    <a href="/tags/note/" style="font-size: 10.415242877637965px;" class="tag-cloud-link">note</a>
     
-    <a href="/tags/frp/" style="font-size: 16.872375408165407px;" class="tag-cloud-link">frp</a>
+    <a href="/tags/crypto/" style="font-size: 19.656192870176223px;" class="tag-cloud-link">crypto</a>
     
-    <a href="/tags/sim/" style="font-size: 11.20483033874152px;" class="tag-cloud-link">sim</a>
+    <a href="/tags/contract/" style="font-size: 13.102094635115042px;" class="tag-cloud-link">contract</a>
     
-    <a href="/tags/git/" style="font-size: 11.268722634610489px;" class="tag-cloud-link">git</a>
+    <a href="/tags/prometheus/" style="font-size: 12.45819014727421px;" class="tag-cloud-link">prometheus</a>
     
-    <a href="/tags/prometheus/" style="font-size: 9.904623262227034px;" class="tag-cloud-link">prometheus</a>
+    <a href="/tags/grafana/" style="font-size: 19.293996471179526px;" class="tag-cloud-link">grafana</a>
     
-    <a href="/tags/grafana/" style="font-size: 11.171651624327234px;" class="tag-cloud-link">grafana</a>
+    <a href="/tags/docker/" style="font-size: 12.360434935976192px;" class="tag-cloud-link">docker</a>
     
-    <a href="/tags/docker/" style="font-size: 10.957684509814372px;" class="tag-cloud-link">docker</a>
+    <a href="/tags/hexo/" style="font-size: 19.836206891325688px;" class="tag-cloud-link">hexo</a>
     
-    <a href="/tags/hexo/" style="font-size: 13.09833011280027px;" class="tag-cloud-link">hexo</a>
+    <a href="/tags/github/" style="font-size: 16.345111955966466px;" class="tag-cloud-link">github</a>
     
-    <a href="/tags/github/" style="font-size: 9.432461693859967px;" class="tag-cloud-link">github</a>
+    <a href="/tags/git/" style="font-size: 10.158729615875458px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/danmu/" style="font-size: 8.932270595914929px;" class="tag-cloud-link">danmu</a>
+    <a href="/tags/danmu/" style="font-size: 8.297005085436455px;" class="tag-cloud-link">danmu</a>
     
-    <a href="/tags/image/" style="font-size: 11.667375463888426px;" class="tag-cloud-link">image</a>
+    <a href="/tags/image/" style="font-size: 10.357751992122125px;" class="tag-cloud-link">image</a>
     
-    <a href="/tags/interview/" style="font-size: 14.194178845643794px;" class="tag-cloud-link">interview</a>
+    <a href="/tags/interview/" style="font-size: 8.430701597587142px;" class="tag-cloud-link">interview</a>
     
-    <a href="/tags/zerotier/" style="font-size: 18.91146107134395px;" class="tag-cloud-link">zerotier</a>
+    <a href="/tags/zerotier/" style="font-size: 14.631687704594691px;" class="tag-cloud-link">zerotier</a>
     
-    <a href="/tags/web/" style="font-size: 15.709518123082958px;" class="tag-cloud-link">web</a>
+    <a href="/tags/web/" style="font-size: 13.35254330081065px;" class="tag-cloud-link">web</a>
     
-    <a href="/tags/lua/" style="font-size: 9.377359847705605px;" class="tag-cloud-link">lua</a>
+    <a href="/tags/mac/" style="font-size: 9.164469105850198px;" class="tag-cloud-link">mac</a>
     
-    <a href="/tags/mac/" style="font-size: 12.817805110665404px;" class="tag-cloud-link">mac</a>
+    <a href="/tags/issue/" style="font-size: 18.35060698287909px;" class="tag-cloud-link">issue</a>
     
-    <a href="/tags/issue/" style="font-size: 11.232977744380435px;" class="tag-cloud-link">issue</a>
+    <a href="/tags/email/" style="font-size: 17.570802734233425px;" class="tag-cloud-link">email</a>
     
-    <a href="/tags/mining/" style="font-size: 8.583571692746139px;" class="tag-cloud-link">mining</a>
+    <a href="/tags/lua/" style="font-size: 12.735954943824524px;" class="tag-cloud-link">lua</a>
     
-    <a href="/tags/email/" style="font-size: 16.413391567575296px;" class="tag-cloud-link">email</a>
+    <a href="/tags/mihomo/" style="font-size: 10.438623829589627px;" class="tag-cloud-link">mihomo</a>
     
-    <a href="/tags/zephyr/" style="font-size: 12.713014398795083px;" class="tag-cloud-link">zephyr</a>
+    <a href="/tags/nssm/" style="font-size: 19.637150279994334px;" class="tag-cloud-link">nssm</a>
     
-    <a href="/tags/xmrig/" style="font-size: 9.571750110612381px;" class="tag-cloud-link">xmrig</a>
+    <a href="/tags/mining/" style="font-size: 13.748269626284902px;" class="tag-cloud-link">mining</a>
     
-    <a href="/tags/monero/" style="font-size: 19.542805242549747px;" class="tag-cloud-link">monero</a>
+    <a href="/tags/zephyr/" style="font-size: 18.19948295202459px;" class="tag-cloud-link">zephyr</a>
     
-    <a href="/tags/netch/" style="font-size: 11.060716042016644px;" class="tag-cloud-link">netch</a>
+    <a href="/tags/xmrig/" style="font-size: 12.421659455013202px;" class="tag-cloud-link">xmrig</a>
     
-    <a href="/tags/openwrt/" style="font-size: 19.670287576580744px;" class="tag-cloud-link">openwrt</a>
+    <a href="/tags/monero/" style="font-size: 17.627299725848005px;" class="tag-cloud-link">monero</a>
     
-    <a href="/tags/openclash/" style="font-size: 15.097096705001864px;" class="tag-cloud-link">openclash</a>
+    <a href="/tags/netch/" style="font-size: 16.01599581660884px;" class="tag-cloud-link">netch</a>
     
-    <a href="/tags/oracle/" style="font-size: 18.869694995431264px;" class="tag-cloud-link">oracle</a>
+    <a href="/tags/openwrt/" style="font-size: 13.37714683730978px;" class="tag-cloud-link">openwrt</a>
     
-    <a href="/tags/paypal/" style="font-size: 18.384635938622615px;" class="tag-cloud-link">paypal</a>
+    <a href="/tags/openclash/" style="font-size: 14.451512784242103px;" class="tag-cloud-link">openclash</a>
     
-    <a href="/tags/quantumultx/" style="font-size: 19.96025291064894px;" class="tag-cloud-link">quantumultx</a>
+    <a href="/tags/oracle/" style="font-size: 11.943829561816456px;" class="tag-cloud-link">oracle</a>
     
-    <a href="/tags/ios/" style="font-size: 12.913439690111474px;" class="tag-cloud-link">ios</a>
+    <a href="/tags/paypal/" style="font-size: 9.809996100838264px;" class="tag-cloud-link">paypal</a>
     
-    <a href="/tags/debian/" style="font-size: 8.415088112531272px;" class="tag-cloud-link">debian</a>
+    <a href="/tags/quantumultx/" style="font-size: 18.16766309554805px;" class="tag-cloud-link">quantumultx</a>
     
-    <a href="/tags/ubuntu/" style="font-size: 14.877630159423543px;" class="tag-cloud-link">ubuntu</a>
+    <a href="/tags/ios/" style="font-size: 10.530653183539489px;" class="tag-cloud-link">ios</a>
     
-    <a href="/tags/regex/" style="font-size: 8.72759759741918px;" class="tag-cloud-link">regex</a>
+    <a href="/tags/debian/" style="font-size: 17.224825139388606px;" class="tag-cloud-link">debian</a>
     
-    <a href="/tags/cutout/" style="font-size: 19.586132165553792px;" class="tag-cloud-link">cutout</a>
+    <a href="/tags/ubuntu/" style="font-size: 9.04115043024029px;" class="tag-cloud-link">ubuntu</a>
     
-    <a href="/tags/sms/" style="font-size: 8.620800436824009px;" class="tag-cloud-link">sms</a>
+    <a href="/tags/regex/" style="font-size: 10.75692449610192px;" class="tag-cloud-link">regex</a>
     
-    <a href="/tags/SSR/" style="font-size: 8.820303801905244px;" class="tag-cloud-link">SSR</a>
+    <a href="/tags/cutout/" style="font-size: 8.805661546739437px;" class="tag-cloud-link">cutout</a>
     
-    <a href="/tags/trojan/" style="font-size: 17.6698381717072px;" class="tag-cloud-link">trojan</a>
+    <a href="/tags/sms/" style="font-size: 12.087106164997229px;" class="tag-cloud-link">sms</a>
     
-    <a href="/tags/xray/" style="font-size: 10.560436600822076px;" class="tag-cloud-link">xray</a>
+    <a href="/tags/SSR/" style="font-size: 8.891375512029546px;" class="tag-cloud-link">SSR</a>
     
-    <a href="/tags/tools/" style="font-size: 13.691585312099823px;" class="tag-cloud-link">tools</a>
+    <a href="/tags/top/" style="font-size: 17.239871746872048px;" class="tag-cloud-link">top</a>
     
-    <a href="/tags/vim/" style="font-size: 14.378636046703551px;" class="tag-cloud-link">vim</a>
+    <a href="/tags/trojan/" style="font-size: 17.807334939789325px;" class="tag-cloud-link">trojan</a>
     
-    <a href="/tags/vmess/" style="font-size: 17.10195283963092px;" class="tag-cloud-link">vmess</a>
+    <a href="/tags/xray/" style="font-size: 9.693660050773413px;" class="tag-cloud-link">xray</a>
     
-    <a href="/tags/vless/" style="font-size: 11.290345259329925px;" class="tag-cloud-link">vless</a>
+    <a href="/tags/tools/" style="font-size: 16.700700233812064px;" class="tag-cloud-link">tools</a>
     
-    <a href="/tags/top/" style="font-size: 8.998401977043038px;" class="tag-cloud-link">top</a>
+    <a href="/tags/vaultwarden/" style="font-size: 18.87672871562167px;" class="tag-cloud-link">vaultwarden</a>
+    
+    <a href="/tags/vim/" style="font-size: 9.18274586285583px;" class="tag-cloud-link">vim</a>
+    
+    <a href="/tags/vmess/" style="font-size: 16.63298266251091px;" class="tag-cloud-link">vmess</a>
+    
+    <a href="/tags/vless/" style="font-size: 19.113935895449536px;" class="tag-cloud-link">vless</a>
     
 </div>
                 
@@ -646,8 +647,8 @@
 
 </script>
 <script>
-	POWERMODE.colorful = 'true';    // make power mode colorful
-	POWERMODE.shake = 'true';       // turn off shake
+  POWERMODE.colorful = 'true';    // make power mode colorful
+  POWERMODE.shake = 'true';          // enable/disable shake
 	// TODO 这里根据具体情况修改
 	document.body.addEventListener('input', POWERMODE);
 </script>

@@ -18,8 +18,7 @@
     
     
     <title>Go笔记(3) | 油炸小龙虾刺身</title>
-	<link rel="shortcut icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://bakasine.github.io" rel="prefetch" />
 
     
@@ -64,7 +63,7 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 7.0.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -175,7 +174,7 @@
 <li><a href="#struct">Go结构体</a></li>
 <li><a href="#interface">Go接口</a></li>
 </ul>
-<h3 id="h2-id-compound-Go复合类型-h2"><h2 id="compound">Go复合类型</h2></h3>
+<h3 id="h2-idcompoundgo复合类型h2"><a class="markdownIt-Anchor" href="#h2-idcompoundgo复合类型h2"></a> <h2 id="compound">Go复合类型</h2></h3>
 <ol>
 <li>Array</li>
 </ol>
@@ -188,7 +187,7 @@
 <li>Map</li>
 </ol>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ages := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span>) <span class="comment">// string:int</span></span><br><span class="line">ages[<span class="string">&quot;alice&quot;</span>] = <span class="number">31</span></span><br><span class="line">ages[<span class="string">&quot;charlie&quot;</span>] = <span class="number">34</span></span><br><span class="line">ages := <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span>&#123;</span><br><span class="line">    <span class="string">&quot;alice&quot;</span>:   <span class="number">31</span>,</span><br><span class="line">    <span class="string">&quot;charlie&quot;</span>: <span class="number">34</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用例</span></span><br><span class="line"><span class="built_in">delete</span>(ages, “alice”) <span class="comment">// 删除</span></span><br><span class="line">ages[<span class="string">&quot;alice&quot;</span>]++ <span class="comment">// 加一</span></span><br><span class="line">_, ok := <span class="keyword">range</span> ages[key] <span class="comment">// key是否存在</span></span><br></pre></td></tr></table></figure>
-<h3 id="h2-id-struct-Go结构体-h2"><h2 id="struct">Go结构体</h2></h3>
+<h3 id="h2-idstructgo结构体h2"><a class="markdownIt-Anchor" href="#h2-idstructgo结构体h2"></a> <h2 id="struct">Go结构体</h2></h3>
 <ol>
 <li>函数和方法</li>
 </ol>
@@ -201,7 +200,7 @@
 <li>方法表达式</li>
 </ol>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Test <span class="keyword">struct</span> &#123;</span><br><span class="line">	A <span class="type">int</span></span><br><span class="line">	B String</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Test)</span></span> Method(val <span class="type">int</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">t := <span class="built_in">new</span>(Test)</span><br><span class="line"></span><br><span class="line">alias := t.Method</span><br><span class="line">alias(val)  <span class="comment">// t.Method(t)</span></span><br></pre></td></tr></table></figure>
-<h3 id="h2-id-interface-Go接口-h2"><h2 id="interface">Go接口</h2></h3>
+<h3 id="h2-idinterfacego接口h2"><a class="markdownIt-Anchor" href="#h2-idinterfacego接口h2"></a> <h2 id="interface">Go接口</h2></h3>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现了接口的所有方法，则认为实现了该接口</span></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">interface</span> &#123;</span><br><span class="line">  GetName() <span class="type">string</span></span><br><span class="line">  GetSex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">  Name <span class="type">string</span></span><br><span class="line">  Sex <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Student)</span></span> GetName() <span class="type">string</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> s.Name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Student)</span></span> Sex() <span class="type">string</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> s.Sex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  判断interface是否实现接口</span></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">struct</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> t <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">t = &amp;Animal&#123;&#125;</span><br><span class="line">_, ok := t.(Person) <span class="comment">// false</span></span><br><span class="line">t = &amp;Student&#123;&#125;</span><br><span class="line">_, ok := t.(Person) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断接口类型</span></span><br><span class="line"><span class="keyword">switch</span> t.(<span class="keyword">type</span>) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="type">int</span>: <span class="comment">// int类型</span></span><br><span class="line"><span class="keyword">case</span> <span class="type">string</span>: <span class="comment">// string类型</span></span><br><span class="line"><span class="keyword">default</span>: <span class="comment">// 其他类型</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//空接口就是不包含任何方法的接口。正因为如此，所有的类型都实现了空接口。</span></span><br><span class="line"><span class="keyword">var</span> a <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">a = <span class="string">&quot;&quot;</span></span><br><span class="line">a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个包含nil指针的接口不是nil接口</span></span><br><span class="line"><span class="keyword">var</span> p Person</span><br><span class="line">p = &amp;Student&#123;&#125;</span><br><span class="line">notNil := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> *Student &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125; </span><br><span class="line">p = notNil() <span class="comment">// p != nil 因为interface中的value为nil但type不为nil</span></span><br><span class="line">isNil := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> *Person &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">p = isNil() <span class="comment">// p == nil</span></span><br></pre></td></tr></table></figure>
 
     </div>
@@ -265,7 +264,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2099/01/01/aq-collection/">合订本</a>
+                    <a href="/2026/01/02/mihomo/">Mihomo 裸核运行</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2026/01/02/vaultwarden/">自建 Vaultwarden 密码管理</a>
                 </span>
             </li>
             
@@ -317,12 +322,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -341,43 +340,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2022/09/27/bbr/">bbr加速</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/06/05/crypto/">发行自己的加密货币并上架去中心交易所</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2022/09/09/dota2-rpg/">dota2游廊RPG地图制作</a>
+                    <a href="/2023/03/10/kamifaka/">搭建自动发卡平台</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/04/02/globe-sim/">菲律宾Globe零月租手机卡申请和保号</a>
+                    <a href="/2023/11/27/mining-xmrig/">CPU 挖矿工具 XMRIG 编译安装</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2024/12/14/grafana/">Prometheus + Grafana 搭建服务器监控系统</a>
+                    <a href="/2022/09/01/netch/">netch游戏加速器</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/06/27/mail/">(已失效)如何申请msn.com、live.com、live.cn等后缀邮箱</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2022/09/01/quantumult-x/">ios去广告、分流、代理</a>
+                    <a href="/2024/01/16/openwrt/">N1 盒子 Openwrt 系统刷入</a>
                 </span>
             </li>
             
@@ -389,13 +382,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2020/02/23/v2ray/">V2Ray+WebSocket+TLS+Nginx一键安装脚本</a>
+                    <a href="/2023/04/30/search-danmuku/">B站下架视频搜索和弹幕获取</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2024/03/12/vim/">Vim 相关</a>
+                    <a href="/2020/02/23/ssr/">SSR一键安装整合</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2022/09/03/trojan-build/">xray架设trojan节点</a>
                 </span>
             </li>
             
@@ -428,117 +427,123 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/ai/" style="font-size: 10.376165728366772px;" class="tag-cloud-link">ai</a>
+    <a href="/tags/qa/" style="font-size: 19.161566253803045px;" class="tag-cloud-link">qa</a>
     
-    <a href="/tags/vits/" style="font-size: 18.259343168429155px;" class="tag-cloud-link">vits</a>
+    <a href="/tags/ai/" style="font-size: 17.39888248980455px;" class="tag-cloud-link">ai</a>
     
-    <a href="/tags/qa/" style="font-size: 9.44020886068149px;" class="tag-cloud-link">qa</a>
+    <a href="/tags/vits/" style="font-size: 14.589417454127156px;" class="tag-cloud-link">vits</a>
     
-    <a href="/tags/linux/" style="font-size: 9.994291687031875px;" class="tag-cloud-link">linux</a>
+    <a href="/tags/linux/" style="font-size: 8.46912523028565px;" class="tag-cloud-link">linux</a>
     
-    <a href="/tags/shell/" style="font-size: 11.519303555498894px;" class="tag-cloud-link">shell</a>
+    <a href="/tags/shell/" style="font-size: 19.85216161397322px;" class="tag-cloud-link">shell</a>
     
-    <a href="/tags/nodejs/" style="font-size: 19.065516309211734px;" class="tag-cloud-link">nodejs</a>
+    <a href="/tags/nodejs/" style="font-size: 11.130214743966262px;" class="tag-cloud-link">nodejs</a>
     
-    <a href="/tags/bbr/" style="font-size: 14.639634847440735px;" class="tag-cloud-link">bbr</a>
+    <a href="/tags/bbr/" style="font-size: 17.304087357901416px;" class="tag-cloud-link">bbr</a>
     
-    <a href="/tags/clash/" style="font-size: 9.466413730703035px;" class="tag-cloud-link">clash</a>
+    <a href="/tags/clash/" style="font-size: 13.28504603366441px;" class="tag-cloud-link">clash</a>
     
-    <a href="/tags/cfw/" style="font-size: 17.217090612073953px;" class="tag-cloud-link">cfw</a>
+    <a href="/tags/cfw/" style="font-size: 11.43992376120351px;" class="tag-cloud-link">cfw</a>
     
-    <a href="/tags/note/" style="font-size: 10.804656328086962px;" class="tag-cloud-link">note</a>
+    <a href="/tags/dota2/" style="font-size: 19.078920603823px;" class="tag-cloud-link">dota2</a>
     
-    <a href="/tags/crypto/" style="font-size: 14.838360450718596px;" class="tag-cloud-link">crypto</a>
+    <a href="/tags/rpg/" style="font-size: 10.569328181196951px;" class="tag-cloud-link">rpg</a>
     
-    <a href="/tags/contract/" style="font-size: 17.244244718968755px;" class="tag-cloud-link">contract</a>
+    <a href="/tags/ffmpeg/" style="font-size: 13.164792593872104px;" class="tag-cloud-link">ffmpeg</a>
     
-    <a href="/tags/dota2/" style="font-size: 11.76998141069967px;" class="tag-cloud-link">dota2</a>
+    <a href="/tags/frp/" style="font-size: 10.351196408952058px;" class="tag-cloud-link">frp</a>
     
-    <a href="/tags/rpg/" style="font-size: 8.837070251881304px;" class="tag-cloud-link">rpg</a>
+    <a href="/tags/sim/" style="font-size: 13.170735640187544px;" class="tag-cloud-link">sim</a>
     
-    <a href="/tags/ffmpeg/" style="font-size: 14.612939547644338px;" class="tag-cloud-link">ffmpeg</a>
+    <a href="/tags/note/" style="font-size: 13.185585782565253px;" class="tag-cloud-link">note</a>
     
-    <a href="/tags/frp/" style="font-size: 19.439855207318942px;" class="tag-cloud-link">frp</a>
+    <a href="/tags/crypto/" style="font-size: 12.580914564462716px;" class="tag-cloud-link">crypto</a>
     
-    <a href="/tags/sim/" style="font-size: 9.879097437703592px;" class="tag-cloud-link">sim</a>
+    <a href="/tags/contract/" style="font-size: 15.859302509770462px;" class="tag-cloud-link">contract</a>
     
-    <a href="/tags/git/" style="font-size: 18.397887239884405px;" class="tag-cloud-link">git</a>
+    <a href="/tags/prometheus/" style="font-size: 17.95177803766773px;" class="tag-cloud-link">prometheus</a>
     
-    <a href="/tags/prometheus/" style="font-size: 14.094328595952554px;" class="tag-cloud-link">prometheus</a>
+    <a href="/tags/grafana/" style="font-size: 14.918684306526822px;" class="tag-cloud-link">grafana</a>
     
-    <a href="/tags/grafana/" style="font-size: 16.437019237347354px;" class="tag-cloud-link">grafana</a>
+    <a href="/tags/docker/" style="font-size: 9.798742839384623px;" class="tag-cloud-link">docker</a>
     
-    <a href="/tags/docker/" style="font-size: 14.662538170033535px;" class="tag-cloud-link">docker</a>
+    <a href="/tags/hexo/" style="font-size: 9.552679416811493px;" class="tag-cloud-link">hexo</a>
     
-    <a href="/tags/hexo/" style="font-size: 10.263219432479142px;" class="tag-cloud-link">hexo</a>
+    <a href="/tags/github/" style="font-size: 12.496371287883585px;" class="tag-cloud-link">github</a>
     
-    <a href="/tags/github/" style="font-size: 13.602105792105515px;" class="tag-cloud-link">github</a>
+    <a href="/tags/git/" style="font-size: 10.207073669317396px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/danmu/" style="font-size: 17.93924891071407px;" class="tag-cloud-link">danmu</a>
+    <a href="/tags/danmu/" style="font-size: 15.926642681782582px;" class="tag-cloud-link">danmu</a>
     
-    <a href="/tags/image/" style="font-size: 8.34344669904073px;" class="tag-cloud-link">image</a>
+    <a href="/tags/image/" style="font-size: 13.546615036354398px;" class="tag-cloud-link">image</a>
     
-    <a href="/tags/interview/" style="font-size: 8.89449417764424px;" class="tag-cloud-link">interview</a>
+    <a href="/tags/interview/" style="font-size: 19.46024251287745px;" class="tag-cloud-link">interview</a>
     
-    <a href="/tags/zerotier/" style="font-size: 14.45478193810838px;" class="tag-cloud-link">zerotier</a>
+    <a href="/tags/zerotier/" style="font-size: 10.703682039911591px;" class="tag-cloud-link">zerotier</a>
     
-    <a href="/tags/web/" style="font-size: 9.736890963593247px;" class="tag-cloud-link">web</a>
+    <a href="/tags/web/" style="font-size: 16.065374444435264px;" class="tag-cloud-link">web</a>
     
-    <a href="/tags/lua/" style="font-size: 16.66519108355301px;" class="tag-cloud-link">lua</a>
+    <a href="/tags/mac/" style="font-size: 16.755294110986462px;" class="tag-cloud-link">mac</a>
     
-    <a href="/tags/mac/" style="font-size: 17.517515191041536px;" class="tag-cloud-link">mac</a>
+    <a href="/tags/issue/" style="font-size: 11.41032128427748px;" class="tag-cloud-link">issue</a>
     
-    <a href="/tags/issue/" style="font-size: 12.310470328564241px;" class="tag-cloud-link">issue</a>
+    <a href="/tags/email/" style="font-size: 10.262950075361669px;" class="tag-cloud-link">email</a>
     
-    <a href="/tags/mining/" style="font-size: 15.483732309290918px;" class="tag-cloud-link">mining</a>
+    <a href="/tags/lua/" style="font-size: 9.657711542339577px;" class="tag-cloud-link">lua</a>
     
-    <a href="/tags/email/" style="font-size: 10.337332667186132px;" class="tag-cloud-link">email</a>
+    <a href="/tags/mihomo/" style="font-size: 12.259060795122947px;" class="tag-cloud-link">mihomo</a>
     
-    <a href="/tags/zephyr/" style="font-size: 18.582151858495678px;" class="tag-cloud-link">zephyr</a>
+    <a href="/tags/nssm/" style="font-size: 18.40982578456468px;" class="tag-cloud-link">nssm</a>
     
-    <a href="/tags/xmrig/" style="font-size: 11.028885695194479px;" class="tag-cloud-link">xmrig</a>
+    <a href="/tags/mining/" style="font-size: 12.593380778258757px;" class="tag-cloud-link">mining</a>
     
-    <a href="/tags/monero/" style="font-size: 10.570405376338684px;" class="tag-cloud-link">monero</a>
+    <a href="/tags/zephyr/" style="font-size: 8.6755357172101px;" class="tag-cloud-link">zephyr</a>
     
-    <a href="/tags/netch/" style="font-size: 11.337739744151285px;" class="tag-cloud-link">netch</a>
+    <a href="/tags/xmrig/" style="font-size: 18.20996481702463px;" class="tag-cloud-link">xmrig</a>
     
-    <a href="/tags/openwrt/" style="font-size: 15.810975800804442px;" class="tag-cloud-link">openwrt</a>
+    <a href="/tags/monero/" style="font-size: 18.355013433750962px;" class="tag-cloud-link">monero</a>
     
-    <a href="/tags/openclash/" style="font-size: 13.963322572200815px;" class="tag-cloud-link">openclash</a>
+    <a href="/tags/netch/" style="font-size: 17.917416818435683px;" class="tag-cloud-link">netch</a>
     
-    <a href="/tags/oracle/" style="font-size: 10.641939948044538px;" class="tag-cloud-link">oracle</a>
+    <a href="/tags/openwrt/" style="font-size: 14.690734634776378px;" class="tag-cloud-link">openwrt</a>
     
-    <a href="/tags/paypal/" style="font-size: 16.77991721860116px;" class="tag-cloud-link">paypal</a>
+    <a href="/tags/openclash/" style="font-size: 18.993734909127294px;" class="tag-cloud-link">openclash</a>
     
-    <a href="/tags/quantumultx/" style="font-size: 14.140851021248487px;" class="tag-cloud-link">quantumultx</a>
+    <a href="/tags/oracle/" style="font-size: 18.2965680339165px;" class="tag-cloud-link">oracle</a>
     
-    <a href="/tags/ios/" style="font-size: 13.254779743028116px;" class="tag-cloud-link">ios</a>
+    <a href="/tags/paypal/" style="font-size: 11.188613592556267px;" class="tag-cloud-link">paypal</a>
     
-    <a href="/tags/debian/" style="font-size: 14.374834713852344px;" class="tag-cloud-link">debian</a>
+    <a href="/tags/quantumultx/" style="font-size: 10.048237376542364px;" class="tag-cloud-link">quantumultx</a>
     
-    <a href="/tags/ubuntu/" style="font-size: 16.05842641768809px;" class="tag-cloud-link">ubuntu</a>
+    <a href="/tags/ios/" style="font-size: 8.89883111006003px;" class="tag-cloud-link">ios</a>
     
-    <a href="/tags/regex/" style="font-size: 13.02987615404211px;" class="tag-cloud-link">regex</a>
+    <a href="/tags/debian/" style="font-size: 11.32861637851907px;" class="tag-cloud-link">debian</a>
     
-    <a href="/tags/cutout/" style="font-size: 14.459356241352587px;" class="tag-cloud-link">cutout</a>
+    <a href="/tags/ubuntu/" style="font-size: 12.538051900719815px;" class="tag-cloud-link">ubuntu</a>
     
-    <a href="/tags/sms/" style="font-size: 16.16508669793261px;" class="tag-cloud-link">sms</a>
+    <a href="/tags/regex/" style="font-size: 10.853778990948515px;" class="tag-cloud-link">regex</a>
     
-    <a href="/tags/SSR/" style="font-size: 16.11588603373293px;" class="tag-cloud-link">SSR</a>
+    <a href="/tags/cutout/" style="font-size: 9.298521442043818px;" class="tag-cloud-link">cutout</a>
     
-    <a href="/tags/trojan/" style="font-size: 16.866572966082742px;" class="tag-cloud-link">trojan</a>
+    <a href="/tags/sms/" style="font-size: 10.38078320173104px;" class="tag-cloud-link">sms</a>
     
-    <a href="/tags/xray/" style="font-size: 15.034064565106913px;" class="tag-cloud-link">xray</a>
+    <a href="/tags/SSR/" style="font-size: 11.917562217921915px;" class="tag-cloud-link">SSR</a>
     
-    <a href="/tags/tools/" style="font-size: 8.447929099107071px;" class="tag-cloud-link">tools</a>
+    <a href="/tags/top/" style="font-size: 15.769437936499962px;" class="tag-cloud-link">top</a>
     
-    <a href="/tags/vim/" style="font-size: 12.997435985786812px;" class="tag-cloud-link">vim</a>
+    <a href="/tags/trojan/" style="font-size: 18.833037472595013px;" class="tag-cloud-link">trojan</a>
     
-    <a href="/tags/vmess/" style="font-size: 8.294974893393055px;" class="tag-cloud-link">vmess</a>
+    <a href="/tags/xray/" style="font-size: 16.415892041327407px;" class="tag-cloud-link">xray</a>
     
-    <a href="/tags/vless/" style="font-size: 8.524175748072949px;" class="tag-cloud-link">vless</a>
+    <a href="/tags/tools/" style="font-size: 14.209141013656755px;" class="tag-cloud-link">tools</a>
     
-    <a href="/tags/top/" style="font-size: 13.62010547427817px;" class="tag-cloud-link">top</a>
+    <a href="/tags/vaultwarden/" style="font-size: 11.034464140569973px;" class="tag-cloud-link">vaultwarden</a>
+    
+    <a href="/tags/vim/" style="font-size: 18.542134487109326px;" class="tag-cloud-link">vim</a>
+    
+    <a href="/tags/vmess/" style="font-size: 8.933090737503283px;" class="tag-cloud-link">vmess</a>
+    
+    <a href="/tags/vless/" style="font-size: 18.25856422920324px;" class="tag-cloud-link">vless</a>
     
 </div>
                 
@@ -634,8 +639,8 @@
 
 </script>
 <script>
-	POWERMODE.colorful = 'true';    // make power mode colorful
-	POWERMODE.shake = 'true';       // turn off shake
+  POWERMODE.colorful = 'true';    // make power mode colorful
+  POWERMODE.shake = 'true';          // enable/disable shake
 	// TODO 这里根据具体情况修改
 	document.body.addEventListener('input', POWERMODE);
 </script>

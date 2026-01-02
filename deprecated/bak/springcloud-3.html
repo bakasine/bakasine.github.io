@@ -18,8 +18,7 @@
     
     
     <title>SpringCloud 笔记三 | 油炸小龙虾刺身</title>
-	<link rel="shortcut icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://bakasine.github.io" rel="prefetch" />
 
     
@@ -64,7 +63,7 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 7.0.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -174,12 +173,12 @@
 <li><a href="#gateway">Zuul路由</a></li>
 <li><a href="#filter">Zuul拦截器</a></li>
 </ul>
-<h1><h2 id="gateway">Zuul路由</h2></h1>
+<h1 id="h2-idgatewayzuul路由h2"><a class="markdownIt-Anchor" href="#h2-idgatewayzuul路由h2"></a> <h2 id="gateway">Zuul路由</h2></h1>
 <p>1.创建 Zuul 的子模块并添加依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用阿里的maven库下载的包有缺漏导致一直爆红。用原生库问题解决 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-zuul<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 用于 eureka --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>2.在Application启动程序添加注解 @EnableZuulProxy 和配置 Zuul 参数</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 service-provider 应用绑定到以 /provider 为前缀的请求，Zuul回默认绑定绑定应用名为前缀</span></span><br><span class="line"><span class="attr">zuul:</span></span><br><span class="line">  <span class="attr">routes:</span></span><br><span class="line">    <span class="attr">service-provider:</span> <span class="string">/provider/**</span></span><br><span class="line">  <span class="comment"># 不默认绑定 service-test 到 /service-test 上 </span></span><br><span class="line">  <span class="attr">ignoredServices:</span> <span class="string">service-test</span></span><br></pre></td></tr></table></figure>
-<h1><h2 id="filter">Zuul拦截器</h2></h1>
+<h1 id="h2-idfilterzuul拦截器h2"><a class="markdownIt-Anchor" href="#h2-idfilterzuul拦截器h2"></a> <h2 id="filter">Zuul拦截器</h2></h1>
 <p>1.创建类并继承 ZuulFilter</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyFilter</span> <span class="keyword">extends</span> <span class="title class_">ZuulFilter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">filterType</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// pre: 这种过滤器在请求被路由之前调用。可利用这种过滤器实现身份验证、在集群中选择请求的微服务，记录调试信息等。</span></span><br><span class="line">        <span class="comment">// routing: 这种过滤器将请求路由到微服务。这种过滤器用于构建发送给微服务的请求，并使用apache httpclient或netflix ribbon请求微服务。</span></span><br><span class="line">        <span class="comment">// post: 这种过滤器在路由到微服务以后执行。这种过滤器可用来为响应添加标准的http header、收集统计信息和指标、将响应从微服务发送给客户端等。</span></span><br><span class="line">        <span class="comment">// error: 在其他阶段发送错误时执行该过滤器。 </span></span><br><span class="line">        <span class="keyword">return</span> FilterConstants.PRE_TYPE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">filterOrder</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 通过int值来定义过滤器的执行顺序，越小优先级越高</span></span><br><span class="line">        <span class="keyword">return</span> FilterConstants.PRE_DECORATION_FILTER_ORDER - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">shouldFilter</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 判断是否过滤</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">run</span><span class="params">()</span> <span class="keyword">throws</span> ZuulException &#123;</span><br><span class="line">        <span class="comment">// 过滤器的具体逻辑</span></span><br><span class="line">        <span class="type">RequestContext</span> <span class="variable">context</span> <span class="operator">=</span> RequestContext.getCurrentContext();</span><br><span class="line">        <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> context.getRequest();</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;access-token&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(s)) &#123;</span><br><span class="line">            context.setSendZuulResponse(<span class="literal">false</span>);</span><br><span class="line">            context.setResponseStatusCode(HttpStatus.FORBIDDEN.value());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
@@ -243,7 +242,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2099/01/01/aq-collection/">合订本</a>
+                    <a href="/2026/01/02/mihomo/">Mihomo 裸核运行</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2026/01/02/vaultwarden/">自建 Vaultwarden 密码管理</a>
                 </span>
             </li>
             
@@ -295,12 +300,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -319,25 +318,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/08/19/auto-script/">简单的自动抢购脚本编写方法</a>
+                    <a href="/2023/05/15/giffgaff/">giffgaff 申请和保号</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2022/09/27/bbr/">bbr加速</a>
+                    <a href="/2023/04/02/globe-sim/">菲律宾Globe零月租手机卡申请和保号</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/06/05/crypto/">发行自己的加密货币并上架去中心交易所</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2024/12/14/grafana/">Prometheus + Grafana 搭建服务器监控系统</a>
+                    <a href="/2018/10/15/git-note/">Git学习</a>
                 </span>
             </li>
             
@@ -349,13 +342,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/04/30/search-danmuku/">B站下架视频搜索和弹幕获取</a>
+                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2022/09/03/trojan-build/">xray架设trojan节点</a>
+                    <a href="/2024/02/12/monero-wallet/">门罗币类钱包挖矿使用指北</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2022/09/03/oraclevps/">oracle免费云服务</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2022/09/01/quantumult-x/">ios去广告、分流、代理</a>
                 </span>
             </li>
             
@@ -368,12 +373,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2024/03/12/vim/">Vim 相关</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2025/12/07/top/">Top 命令</a>
                 </span>
             </li>
             
@@ -406,117 +405,123 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/ai/" style="font-size: 18.00364002112471px;" class="tag-cloud-link">ai</a>
+    <a href="/tags/qa/" style="font-size: 19.348335410476125px;" class="tag-cloud-link">qa</a>
     
-    <a href="/tags/vits/" style="font-size: 14.078079240593569px;" class="tag-cloud-link">vits</a>
+    <a href="/tags/ai/" style="font-size: 8.178759692241366px;" class="tag-cloud-link">ai</a>
     
-    <a href="/tags/qa/" style="font-size: 15.721374425008324px;" class="tag-cloud-link">qa</a>
+    <a href="/tags/vits/" style="font-size: 8.486243700173864px;" class="tag-cloud-link">vits</a>
     
-    <a href="/tags/linux/" style="font-size: 8.691124683295723px;" class="tag-cloud-link">linux</a>
+    <a href="/tags/linux/" style="font-size: 8.036109022570347px;" class="tag-cloud-link">linux</a>
     
-    <a href="/tags/shell/" style="font-size: 9.289250889033253px;" class="tag-cloud-link">shell</a>
+    <a href="/tags/shell/" style="font-size: 13.415063104355198px;" class="tag-cloud-link">shell</a>
     
-    <a href="/tags/nodejs/" style="font-size: 10.132373647361575px;" class="tag-cloud-link">nodejs</a>
+    <a href="/tags/nodejs/" style="font-size: 14.965825422786102px;" class="tag-cloud-link">nodejs</a>
     
-    <a href="/tags/bbr/" style="font-size: 13.463242425235496px;" class="tag-cloud-link">bbr</a>
+    <a href="/tags/bbr/" style="font-size: 10.722918315065883px;" class="tag-cloud-link">bbr</a>
     
-    <a href="/tags/clash/" style="font-size: 15.333287865869089px;" class="tag-cloud-link">clash</a>
+    <a href="/tags/clash/" style="font-size: 13.386974135650222px;" class="tag-cloud-link">clash</a>
     
-    <a href="/tags/cfw/" style="font-size: 11.694146608196839px;" class="tag-cloud-link">cfw</a>
+    <a href="/tags/cfw/" style="font-size: 10.484956491602524px;" class="tag-cloud-link">cfw</a>
     
-    <a href="/tags/note/" style="font-size: 17.39991393432948px;" class="tag-cloud-link">note</a>
+    <a href="/tags/dota2/" style="font-size: 18.702129324684904px;" class="tag-cloud-link">dota2</a>
     
-    <a href="/tags/crypto/" style="font-size: 11.566144643349954px;" class="tag-cloud-link">crypto</a>
+    <a href="/tags/rpg/" style="font-size: 18.209082651117555px;" class="tag-cloud-link">rpg</a>
     
-    <a href="/tags/contract/" style="font-size: 18.546231830895394px;" class="tag-cloud-link">contract</a>
+    <a href="/tags/ffmpeg/" style="font-size: 14.041051015599706px;" class="tag-cloud-link">ffmpeg</a>
     
-    <a href="/tags/dota2/" style="font-size: 19.79754019857879px;" class="tag-cloud-link">dota2</a>
+    <a href="/tags/frp/" style="font-size: 15.207434301696113px;" class="tag-cloud-link">frp</a>
     
-    <a href="/tags/rpg/" style="font-size: 12.29725683292032px;" class="tag-cloud-link">rpg</a>
+    <a href="/tags/sim/" style="font-size: 17.42489597311458px;" class="tag-cloud-link">sim</a>
     
-    <a href="/tags/ffmpeg/" style="font-size: 17.640084402521115px;" class="tag-cloud-link">ffmpeg</a>
+    <a href="/tags/note/" style="font-size: 9.052237428513333px;" class="tag-cloud-link">note</a>
     
-    <a href="/tags/frp/" style="font-size: 8.582188992078471px;" class="tag-cloud-link">frp</a>
+    <a href="/tags/crypto/" style="font-size: 17.43701565743493px;" class="tag-cloud-link">crypto</a>
     
-    <a href="/tags/sim/" style="font-size: 10.88211725292174px;" class="tag-cloud-link">sim</a>
+    <a href="/tags/contract/" style="font-size: 9.123503376778663px;" class="tag-cloud-link">contract</a>
     
-    <a href="/tags/git/" style="font-size: 12.250038749013747px;" class="tag-cloud-link">git</a>
+    <a href="/tags/prometheus/" style="font-size: 18.11559300914106px;" class="tag-cloud-link">prometheus</a>
     
-    <a href="/tags/prometheus/" style="font-size: 11.636685130734449px;" class="tag-cloud-link">prometheus</a>
+    <a href="/tags/grafana/" style="font-size: 11.049040085768922px;" class="tag-cloud-link">grafana</a>
     
-    <a href="/tags/grafana/" style="font-size: 9.059288034133917px;" class="tag-cloud-link">grafana</a>
+    <a href="/tags/docker/" style="font-size: 17.859307195492327px;" class="tag-cloud-link">docker</a>
     
-    <a href="/tags/docker/" style="font-size: 19.789166393967655px;" class="tag-cloud-link">docker</a>
+    <a href="/tags/hexo/" style="font-size: 18.443781332540244px;" class="tag-cloud-link">hexo</a>
     
-    <a href="/tags/hexo/" style="font-size: 17.3465259065355px;" class="tag-cloud-link">hexo</a>
+    <a href="/tags/github/" style="font-size: 16.602037044823113px;" class="tag-cloud-link">github</a>
     
-    <a href="/tags/github/" style="font-size: 9.598631078341334px;" class="tag-cloud-link">github</a>
+    <a href="/tags/git/" style="font-size: 15.324742256005312px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/danmu/" style="font-size: 16.443707443990416px;" class="tag-cloud-link">danmu</a>
+    <a href="/tags/danmu/" style="font-size: 14.92853601310317px;" class="tag-cloud-link">danmu</a>
     
-    <a href="/tags/image/" style="font-size: 12.174582685586886px;" class="tag-cloud-link">image</a>
+    <a href="/tags/image/" style="font-size: 11.942806278730398px;" class="tag-cloud-link">image</a>
     
-    <a href="/tags/interview/" style="font-size: 10.062066235527952px;" class="tag-cloud-link">interview</a>
+    <a href="/tags/interview/" style="font-size: 19.864316315130363px;" class="tag-cloud-link">interview</a>
     
-    <a href="/tags/zerotier/" style="font-size: 17.459509942189705px;" class="tag-cloud-link">zerotier</a>
+    <a href="/tags/zerotier/" style="font-size: 11.49197133334778px;" class="tag-cloud-link">zerotier</a>
     
-    <a href="/tags/web/" style="font-size: 16.921079198145442px;" class="tag-cloud-link">web</a>
+    <a href="/tags/web/" style="font-size: 9.55328739217912px;" class="tag-cloud-link">web</a>
     
-    <a href="/tags/lua/" style="font-size: 13.977350813157027px;" class="tag-cloud-link">lua</a>
+    <a href="/tags/mac/" style="font-size: 11.220804005337675px;" class="tag-cloud-link">mac</a>
     
-    <a href="/tags/mac/" style="font-size: 18.737404555194036px;" class="tag-cloud-link">mac</a>
+    <a href="/tags/issue/" style="font-size: 15.588247920193293px;" class="tag-cloud-link">issue</a>
     
-    <a href="/tags/issue/" style="font-size: 11.493896693643135px;" class="tag-cloud-link">issue</a>
+    <a href="/tags/email/" style="font-size: 11.041505785923912px;" class="tag-cloud-link">email</a>
     
-    <a href="/tags/mining/" style="font-size: 12.838670421161478px;" class="tag-cloud-link">mining</a>
+    <a href="/tags/lua/" style="font-size: 11.32208774905653px;" class="tag-cloud-link">lua</a>
     
-    <a href="/tags/email/" style="font-size: 16.7673367339642px;" class="tag-cloud-link">email</a>
+    <a href="/tags/mihomo/" style="font-size: 8.002045666126351px;" class="tag-cloud-link">mihomo</a>
     
-    <a href="/tags/zephyr/" style="font-size: 15.068691195851393px;" class="tag-cloud-link">zephyr</a>
+    <a href="/tags/nssm/" style="font-size: 15.765877564263398px;" class="tag-cloud-link">nssm</a>
     
-    <a href="/tags/xmrig/" style="font-size: 10.171071549421594px;" class="tag-cloud-link">xmrig</a>
+    <a href="/tags/mining/" style="font-size: 19.81268217594068px;" class="tag-cloud-link">mining</a>
     
-    <a href="/tags/monero/" style="font-size: 15.739846871260987px;" class="tag-cloud-link">monero</a>
+    <a href="/tags/zephyr/" style="font-size: 17.778914264545666px;" class="tag-cloud-link">zephyr</a>
     
-    <a href="/tags/netch/" style="font-size: 17.176597046865123px;" class="tag-cloud-link">netch</a>
+    <a href="/tags/xmrig/" style="font-size: 15.874165360257916px;" class="tag-cloud-link">xmrig</a>
     
-    <a href="/tags/openwrt/" style="font-size: 19.523239957471972px;" class="tag-cloud-link">openwrt</a>
+    <a href="/tags/monero/" style="font-size: 11.410735962800505px;" class="tag-cloud-link">monero</a>
     
-    <a href="/tags/openclash/" style="font-size: 17.808596473074655px;" class="tag-cloud-link">openclash</a>
+    <a href="/tags/netch/" style="font-size: 12.181220118199708px;" class="tag-cloud-link">netch</a>
     
-    <a href="/tags/oracle/" style="font-size: 11.238309451404488px;" class="tag-cloud-link">oracle</a>
+    <a href="/tags/openwrt/" style="font-size: 19.07442043922191px;" class="tag-cloud-link">openwrt</a>
     
-    <a href="/tags/paypal/" style="font-size: 14.018692606313643px;" class="tag-cloud-link">paypal</a>
+    <a href="/tags/openclash/" style="font-size: 11.685589766998124px;" class="tag-cloud-link">openclash</a>
     
-    <a href="/tags/quantumultx/" style="font-size: 12.702303833178677px;" class="tag-cloud-link">quantumultx</a>
+    <a href="/tags/oracle/" style="font-size: 14.745423021600999px;" class="tag-cloud-link">oracle</a>
     
-    <a href="/tags/ios/" style="font-size: 18.410883751813152px;" class="tag-cloud-link">ios</a>
+    <a href="/tags/paypal/" style="font-size: 9.237772769490794px;" class="tag-cloud-link">paypal</a>
     
-    <a href="/tags/debian/" style="font-size: 19.558401537306285px;" class="tag-cloud-link">debian</a>
+    <a href="/tags/quantumultx/" style="font-size: 10.347754938065119px;" class="tag-cloud-link">quantumultx</a>
     
-    <a href="/tags/ubuntu/" style="font-size: 18.646449749769744px;" class="tag-cloud-link">ubuntu</a>
+    <a href="/tags/ios/" style="font-size: 14.94275103005615px;" class="tag-cloud-link">ios</a>
     
-    <a href="/tags/regex/" style="font-size: 16.6407637774887px;" class="tag-cloud-link">regex</a>
+    <a href="/tags/debian/" style="font-size: 14.314027492294656px;" class="tag-cloud-link">debian</a>
     
-    <a href="/tags/cutout/" style="font-size: 15.083138653948438px;" class="tag-cloud-link">cutout</a>
+    <a href="/tags/ubuntu/" style="font-size: 15.502234026635037px;" class="tag-cloud-link">ubuntu</a>
     
-    <a href="/tags/sms/" style="font-size: 15.524824469123558px;" class="tag-cloud-link">sms</a>
+    <a href="/tags/regex/" style="font-size: 13.428715706434982px;" class="tag-cloud-link">regex</a>
     
-    <a href="/tags/SSR/" style="font-size: 18.2628597175073px;" class="tag-cloud-link">SSR</a>
+    <a href="/tags/cutout/" style="font-size: 18.794595540953964px;" class="tag-cloud-link">cutout</a>
     
-    <a href="/tags/trojan/" style="font-size: 16.781162864373552px;" class="tag-cloud-link">trojan</a>
+    <a href="/tags/sms/" style="font-size: 13.671032324749028px;" class="tag-cloud-link">sms</a>
     
-    <a href="/tags/xray/" style="font-size: 13.758690033999633px;" class="tag-cloud-link">xray</a>
+    <a href="/tags/SSR/" style="font-size: 15.629533151760757px;" class="tag-cloud-link">SSR</a>
     
-    <a href="/tags/tools/" style="font-size: 16.254436650807424px;" class="tag-cloud-link">tools</a>
+    <a href="/tags/top/" style="font-size: 10.366778241128197px;" class="tag-cloud-link">top</a>
     
-    <a href="/tags/vim/" style="font-size: 10.80981198623736px;" class="tag-cloud-link">vim</a>
+    <a href="/tags/trojan/" style="font-size: 17.227304453427223px;" class="tag-cloud-link">trojan</a>
     
-    <a href="/tags/vmess/" style="font-size: 13.538658606383734px;" class="tag-cloud-link">vmess</a>
+    <a href="/tags/xray/" style="font-size: 16.67019458666691px;" class="tag-cloud-link">xray</a>
     
-    <a href="/tags/vless/" style="font-size: 17.3252890733749px;" class="tag-cloud-link">vless</a>
+    <a href="/tags/tools/" style="font-size: 8.53345127017015px;" class="tag-cloud-link">tools</a>
     
-    <a href="/tags/top/" style="font-size: 15.59197053974423px;" class="tag-cloud-link">top</a>
+    <a href="/tags/vaultwarden/" style="font-size: 14.915395915870644px;" class="tag-cloud-link">vaultwarden</a>
+    
+    <a href="/tags/vim/" style="font-size: 17.09553864748747px;" class="tag-cloud-link">vim</a>
+    
+    <a href="/tags/vmess/" style="font-size: 14.271018737608387px;" class="tag-cloud-link">vmess</a>
+    
+    <a href="/tags/vless/" style="font-size: 16.795916060318618px;" class="tag-cloud-link">vless</a>
     
 </div>
                 
@@ -612,8 +617,8 @@
 
 </script>
 <script>
-	POWERMODE.colorful = 'true';    // make power mode colorful
-	POWERMODE.shake = 'true';       // turn off shake
+  POWERMODE.colorful = 'true';    // make power mode colorful
+  POWERMODE.shake = 'true';          // enable/disable shake
 	// TODO 这里根据具体情况修改
 	document.body.addEventListener('input', POWERMODE);
 </script>

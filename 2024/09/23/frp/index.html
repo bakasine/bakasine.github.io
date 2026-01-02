@@ -18,8 +18,7 @@
     
     
     <title>通过 Frp 实现内网穿透 | 油炸小龙虾刺身</title>
-	<link rel="shortcut icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://bakasine.github.io" rel="prefetch" />
 
     
@@ -64,7 +63,7 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 7.0.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -156,12 +155,9 @@
         </div>
         <div class="tag-article">
             
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
                 
-                <a href="/tags/frp/">frp</a>
+                <span class="label label-gal"><i class="fa fa-tag"></i> <a href="/tags/frp/">frp</a></span>
                 
-            </span>
             
             <span class="label label-gal">
                 <i class="fa fa-calendar"></i> 2024-09-23
@@ -182,9 +178,8 @@
             </p>
             <p>
                 
-                <i class="fa fa-tags"></i>
                 
-                <a href="/tags/frp/">frp</a>
+                <i class="fa fa-tag"></i> <a href="/tags/frp/">frp</a>
                 
                 
                 
@@ -192,21 +187,21 @@
         </center>
     </div>
     <div class="content-article">
-        <p><a href="#ins">安装</a><br>
-<a href="#server">配置服务端</a><br>
-<a href="#client">配置客户端</a><br>
+        <p><a href="#ins">安装</a><br />
+<a href="#server">配置服务端</a><br />
+<a href="#client">配置客户端</a><br />
 <a href="#usage">用法</a></p>
-<h1><h2 id="ins">安装</h2></h1>
+<h1 id="h2-idins安装h2"><a class="markdownIt-Anchor" href="#h2-idins安装h2"></a> <h2 id="ins">安装</h2></h1>
 <p><a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases/latest">下载链接</a></p>
-<h1><h2 id="server">配置服务端</h2></h1>
+<h1 id="h2-idserver配置服务端h2"><a class="markdownIt-Anchor" href="#h2-idserver配置服务端h2"></a> <h2 id="server">配置服务端</h2></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /root/tmp</span><br><span class="line">tar --strip-components=1 -C /root/tmp -xvf 安装包</span><br><span class="line"><span class="built_in">mv</span> -f /root/tmp/frps /usr/local/bin/azi</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> &gt; /etc/systemd/system/azi.service &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">[Unit]</span></span><br><span class="line"><span class="string">Description = azi server</span></span><br><span class="line"><span class="string">After = network.target syslog.target</span></span><br><span class="line"><span class="string">Wants = network.target</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Service]</span></span><br><span class="line"><span class="string">Type = simple</span></span><br><span class="line"><span class="string">ExecStart = /usr/local/bin/azi -c /usr/local/etc/azi/config.toml</span></span><br><span class="line"><span class="string">Restart=on-failure</span></span><br><span class="line"><span class="string">RestartSec=5</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Install]</span></span><br><span class="line"><span class="string">WantedBy = multi-user.target</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> azi</span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> -p /usr/local/etc/azi/</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> &gt; /usr/local/etc/azi/config.toml &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">bindPort = 8848</span></span><br><span class="line"><span class="string">bindAddr = &quot;::&quot;</span></span><br><span class="line"><span class="string">auth.token = &quot;hentailolicon&quot;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> -r /root/tmp</span><br></pre></td></tr></table></figure>
-<h1><h2 id="client">配置客户端</h2></h1>
+<h1 id="h2-idclient配置客户端h2"><a class="markdownIt-Anchor" href="#h2-idclient配置客户端h2"></a> <h2 id="client">配置客户端</h2></h1>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;服务端的IP&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">8848</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">&quot;hentailolicon&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;ssh&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;::&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">22</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">2222</span></span><br><span class="line"><span class="attr">transport.useEncryption</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">transport.useCompression</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p><code>Win11 安装 OpenSSH</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">设置 -&gt; 系统 -&gt; 可选功能 -&gt; 添加可选功能 -&gt; 搜索 OpenSSH</span><br><span class="line"></span><br><span class="line">搜索 OpenSSH 客户端 OpenSSH 服务器 -&gt; 下一步 -&gt; 安装</span><br><span class="line"></span><br><span class="line">win+r -&gt; services.msc -&gt; OpenSSH SSH Server -&gt; 启动</span><br></pre></td></tr></table></figure>
 <p><code>开放端口</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win+r -&gt; firewall.cpl -&gt; 高级设置 -&gt; 入站规则 -&gt; 新建规则</span><br></pre></td></tr></table></figure>
-<h1><h2 id="usage">用法</h2></h1>
+<h1 id="h2-idusage用法h2"><a class="markdownIt-Anchor" href="#h2-idusage用法h2"></a> <h2 id="usage">用法</h2></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 2222 用户名@服务端ip</span><br></pre></td></tr></table></figure>
     </div>
 </article>
@@ -268,7 +263,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2099/01/01/aq-collection/">合订本</a>
+                    <a href="/2026/01/02/mihomo/">Mihomo 裸核运行</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2026/01/02/vaultwarden/">自建 Vaultwarden 密码管理</a>
                 </span>
             </li>
             
@@ -320,12 +321,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -344,49 +339,43 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/08/29/clash/">Clash 基础用法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2025/05/08/ffmpeg/">ffmpeg 媒体处理简单操作</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/05/15/giffgaff/">giffgaff 申请和保号</a>
+                    <a href="/2024/12/14/grafana/">Prometheus + Grafana 搭建服务器监控系统</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/06/27/mail/">(已失效)如何申请msn.com、live.com、live.cn等后缀邮箱</a>
+                    <a href="/2023/03/27/history-danmu/">找到B站下架视频历史弹幕</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/11/27/mining-xmrig/">CPU 挖矿工具 XMRIG 编译安装</a>
+                    <a href="/2021/10/09/mac-issue/">MacBook(M1)遇到的问题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2024/01/16/openwrt/">N1 盒子 Openwrt 系统刷入</a>
+                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/06/26/re-os/">Debian(Ubuntu)网络安装/重装系统一键脚本</a>
+                    <a href="/2022/09/01/netch/">netch游戏加速器</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/02/18/regex/">正则表达式</a>
+                    <a href="/2018/11/28/server-speeder/">锐速</a>
                 </span>
             </li>
             
@@ -398,7 +387,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2025/12/07/top/">Top 命令</a>
+                    <a href="/2022/09/03/trojan-build/">xray架设trojan节点</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2022/10/15/vmess-dns/">vmess/vless + ws + tls + dns</a>
                 </span>
             </li>
             
@@ -431,117 +426,123 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/ai/" style="font-size: 13.499733982737382px;" class="tag-cloud-link">ai</a>
+    <a href="/tags/qa/" style="font-size: 8.352810514821908px;" class="tag-cloud-link">qa</a>
     
-    <a href="/tags/vits/" style="font-size: 10.497020149433627px;" class="tag-cloud-link">vits</a>
+    <a href="/tags/ai/" style="font-size: 19.87755598859394px;" class="tag-cloud-link">ai</a>
     
-    <a href="/tags/qa/" style="font-size: 12.571853348722819px;" class="tag-cloud-link">qa</a>
+    <a href="/tags/vits/" style="font-size: 14.764288544682552px;" class="tag-cloud-link">vits</a>
     
-    <a href="/tags/linux/" style="font-size: 18.92925034777071px;" class="tag-cloud-link">linux</a>
+    <a href="/tags/linux/" style="font-size: 13.562662755291502px;" class="tag-cloud-link">linux</a>
     
-    <a href="/tags/shell/" style="font-size: 10.436968896714927px;" class="tag-cloud-link">shell</a>
+    <a href="/tags/shell/" style="font-size: 18.999135562685034px;" class="tag-cloud-link">shell</a>
     
-    <a href="/tags/nodejs/" style="font-size: 16.359853851669104px;" class="tag-cloud-link">nodejs</a>
+    <a href="/tags/nodejs/" style="font-size: 13.96222718384955px;" class="tag-cloud-link">nodejs</a>
     
-    <a href="/tags/bbr/" style="font-size: 8.16171862287436px;" class="tag-cloud-link">bbr</a>
+    <a href="/tags/bbr/" style="font-size: 8.477625785259892px;" class="tag-cloud-link">bbr</a>
     
-    <a href="/tags/clash/" style="font-size: 9.047494393689991px;" class="tag-cloud-link">clash</a>
+    <a href="/tags/clash/" style="font-size: 11.155700033493481px;" class="tag-cloud-link">clash</a>
     
-    <a href="/tags/cfw/" style="font-size: 11.305757990187072px;" class="tag-cloud-link">cfw</a>
+    <a href="/tags/cfw/" style="font-size: 15.523970957166068px;" class="tag-cloud-link">cfw</a>
     
-    <a href="/tags/note/" style="font-size: 19.976220158701505px;" class="tag-cloud-link">note</a>
+    <a href="/tags/dota2/" style="font-size: 16.92676691875574px;" class="tag-cloud-link">dota2</a>
     
-    <a href="/tags/crypto/" style="font-size: 9.932471607400153px;" class="tag-cloud-link">crypto</a>
+    <a href="/tags/rpg/" style="font-size: 13.5118442814477px;" class="tag-cloud-link">rpg</a>
     
-    <a href="/tags/contract/" style="font-size: 8.660947578221357px;" class="tag-cloud-link">contract</a>
+    <a href="/tags/ffmpeg/" style="font-size: 9.98713190206157px;" class="tag-cloud-link">ffmpeg</a>
     
-    <a href="/tags/dota2/" style="font-size: 19.353563068914525px;" class="tag-cloud-link">dota2</a>
+    <a href="/tags/frp/" style="font-size: 14.506994484747334px;" class="tag-cloud-link">frp</a>
     
-    <a href="/tags/rpg/" style="font-size: 16.92991532391403px;" class="tag-cloud-link">rpg</a>
+    <a href="/tags/sim/" style="font-size: 17.229599082748294px;" class="tag-cloud-link">sim</a>
     
-    <a href="/tags/ffmpeg/" style="font-size: 12.012014052652155px;" class="tag-cloud-link">ffmpeg</a>
+    <a href="/tags/note/" style="font-size: 9.79616080443872px;" class="tag-cloud-link">note</a>
     
-    <a href="/tags/frp/" style="font-size: 14.321648257561202px;" class="tag-cloud-link">frp</a>
+    <a href="/tags/crypto/" style="font-size: 19.748859539988654px;" class="tag-cloud-link">crypto</a>
     
-    <a href="/tags/sim/" style="font-size: 14.478283428547101px;" class="tag-cloud-link">sim</a>
+    <a href="/tags/contract/" style="font-size: 18.664414760408093px;" class="tag-cloud-link">contract</a>
     
-    <a href="/tags/git/" style="font-size: 19.68579811031121px;" class="tag-cloud-link">git</a>
+    <a href="/tags/prometheus/" style="font-size: 18.518686733753135px;" class="tag-cloud-link">prometheus</a>
     
-    <a href="/tags/prometheus/" style="font-size: 19.778765009248087px;" class="tag-cloud-link">prometheus</a>
+    <a href="/tags/grafana/" style="font-size: 18.95766198342394px;" class="tag-cloud-link">grafana</a>
     
-    <a href="/tags/grafana/" style="font-size: 18.35463696119761px;" class="tag-cloud-link">grafana</a>
+    <a href="/tags/docker/" style="font-size: 19.314483125344502px;" class="tag-cloud-link">docker</a>
     
-    <a href="/tags/docker/" style="font-size: 19.11535566955139px;" class="tag-cloud-link">docker</a>
+    <a href="/tags/hexo/" style="font-size: 19.423861386753025px;" class="tag-cloud-link">hexo</a>
     
-    <a href="/tags/hexo/" style="font-size: 15.190132129816075px;" class="tag-cloud-link">hexo</a>
+    <a href="/tags/github/" style="font-size: 18.700684882416688px;" class="tag-cloud-link">github</a>
     
-    <a href="/tags/github/" style="font-size: 14.727041697633057px;" class="tag-cloud-link">github</a>
+    <a href="/tags/git/" style="font-size: 19.065569854864364px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/danmu/" style="font-size: 17.679811733110306px;" class="tag-cloud-link">danmu</a>
+    <a href="/tags/danmu/" style="font-size: 18.26085685233996px;" class="tag-cloud-link">danmu</a>
     
-    <a href="/tags/image/" style="font-size: 8.306992777349734px;" class="tag-cloud-link">image</a>
+    <a href="/tags/image/" style="font-size: 18.685701606860736px;" class="tag-cloud-link">image</a>
     
-    <a href="/tags/interview/" style="font-size: 12.846805624999782px;" class="tag-cloud-link">interview</a>
+    <a href="/tags/interview/" style="font-size: 19.194128289056927px;" class="tag-cloud-link">interview</a>
     
-    <a href="/tags/zerotier/" style="font-size: 15.234428381996404px;" class="tag-cloud-link">zerotier</a>
+    <a href="/tags/zerotier/" style="font-size: 18.43618842766223px;" class="tag-cloud-link">zerotier</a>
     
-    <a href="/tags/web/" style="font-size: 15.764500636186531px;" class="tag-cloud-link">web</a>
+    <a href="/tags/web/" style="font-size: 11.61991155997833px;" class="tag-cloud-link">web</a>
     
-    <a href="/tags/lua/" style="font-size: 9.146958572009694px;" class="tag-cloud-link">lua</a>
+    <a href="/tags/mac/" style="font-size: 13.730886335543389px;" class="tag-cloud-link">mac</a>
     
-    <a href="/tags/mac/" style="font-size: 12.576679507894966px;" class="tag-cloud-link">mac</a>
+    <a href="/tags/issue/" style="font-size: 8.240293307364926px;" class="tag-cloud-link">issue</a>
     
-    <a href="/tags/issue/" style="font-size: 16.7021957660438px;" class="tag-cloud-link">issue</a>
+    <a href="/tags/email/" style="font-size: 17.34078319455973px;" class="tag-cloud-link">email</a>
     
-    <a href="/tags/mining/" style="font-size: 14.10390856594898px;" class="tag-cloud-link">mining</a>
+    <a href="/tags/lua/" style="font-size: 8.654142585963616px;" class="tag-cloud-link">lua</a>
     
-    <a href="/tags/email/" style="font-size: 11.132922373401769px;" class="tag-cloud-link">email</a>
+    <a href="/tags/mihomo/" style="font-size: 9.848632711191932px;" class="tag-cloud-link">mihomo</a>
     
-    <a href="/tags/zephyr/" style="font-size: 15.468936978126628px;" class="tag-cloud-link">zephyr</a>
+    <a href="/tags/nssm/" style="font-size: 16.501175819437854px;" class="tag-cloud-link">nssm</a>
     
-    <a href="/tags/xmrig/" style="font-size: 8.174233247736629px;" class="tag-cloud-link">xmrig</a>
+    <a href="/tags/mining/" style="font-size: 9.991623477732613px;" class="tag-cloud-link">mining</a>
     
-    <a href="/tags/monero/" style="font-size: 10.870645473858263px;" class="tag-cloud-link">monero</a>
+    <a href="/tags/zephyr/" style="font-size: 11.509679559462922px;" class="tag-cloud-link">zephyr</a>
     
-    <a href="/tags/netch/" style="font-size: 8.822056556199634px;" class="tag-cloud-link">netch</a>
+    <a href="/tags/xmrig/" style="font-size: 10.53357649605984px;" class="tag-cloud-link">xmrig</a>
     
-    <a href="/tags/openwrt/" style="font-size: 13.965061656894523px;" class="tag-cloud-link">openwrt</a>
+    <a href="/tags/monero/" style="font-size: 19.54727822458919px;" class="tag-cloud-link">monero</a>
     
-    <a href="/tags/openclash/" style="font-size: 19.150977867678122px;" class="tag-cloud-link">openclash</a>
+    <a href="/tags/netch/" style="font-size: 15.957565420868558px;" class="tag-cloud-link">netch</a>
     
-    <a href="/tags/oracle/" style="font-size: 13.029542412222543px;" class="tag-cloud-link">oracle</a>
+    <a href="/tags/openwrt/" style="font-size: 16.72898945381143px;" class="tag-cloud-link">openwrt</a>
     
-    <a href="/tags/paypal/" style="font-size: 14.353782660167983px;" class="tag-cloud-link">paypal</a>
+    <a href="/tags/openclash/" style="font-size: 8.653793979602506px;" class="tag-cloud-link">openclash</a>
     
-    <a href="/tags/quantumultx/" style="font-size: 13.993526327124291px;" class="tag-cloud-link">quantumultx</a>
+    <a href="/tags/oracle/" style="font-size: 14.234381005746721px;" class="tag-cloud-link">oracle</a>
     
-    <a href="/tags/ios/" style="font-size: 17.52497224914169px;" class="tag-cloud-link">ios</a>
+    <a href="/tags/paypal/" style="font-size: 13.759339255385092px;" class="tag-cloud-link">paypal</a>
     
-    <a href="/tags/debian/" style="font-size: 16.654997894340035px;" class="tag-cloud-link">debian</a>
+    <a href="/tags/quantumultx/" style="font-size: 14.16697714657231px;" class="tag-cloud-link">quantumultx</a>
     
-    <a href="/tags/ubuntu/" style="font-size: 17.5085178238618px;" class="tag-cloud-link">ubuntu</a>
+    <a href="/tags/ios/" style="font-size: 14.50461785999955px;" class="tag-cloud-link">ios</a>
     
-    <a href="/tags/regex/" style="font-size: 19.615357669221346px;" class="tag-cloud-link">regex</a>
+    <a href="/tags/debian/" style="font-size: 19.29920955143536px;" class="tag-cloud-link">debian</a>
     
-    <a href="/tags/cutout/" style="font-size: 11.704890888790217px;" class="tag-cloud-link">cutout</a>
+    <a href="/tags/ubuntu/" style="font-size: 12.69183176670307px;" class="tag-cloud-link">ubuntu</a>
     
-    <a href="/tags/sms/" style="font-size: 9.669357691155199px;" class="tag-cloud-link">sms</a>
+    <a href="/tags/regex/" style="font-size: 8.20865235520277px;" class="tag-cloud-link">regex</a>
     
-    <a href="/tags/SSR/" style="font-size: 11.595555008199865px;" class="tag-cloud-link">SSR</a>
+    <a href="/tags/cutout/" style="font-size: 10.176751096061794px;" class="tag-cloud-link">cutout</a>
     
-    <a href="/tags/trojan/" style="font-size: 19.33226960288651px;" class="tag-cloud-link">trojan</a>
+    <a href="/tags/sms/" style="font-size: 15.038074591512988px;" class="tag-cloud-link">sms</a>
     
-    <a href="/tags/xray/" style="font-size: 19.627548129134034px;" class="tag-cloud-link">xray</a>
+    <a href="/tags/SSR/" style="font-size: 16.547859747319702px;" class="tag-cloud-link">SSR</a>
     
-    <a href="/tags/tools/" style="font-size: 15.787736922149024px;" class="tag-cloud-link">tools</a>
+    <a href="/tags/top/" style="font-size: 9.583646307041487px;" class="tag-cloud-link">top</a>
     
-    <a href="/tags/vim/" style="font-size: 9.542674296236845px;" class="tag-cloud-link">vim</a>
+    <a href="/tags/trojan/" style="font-size: 18.27151484430987px;" class="tag-cloud-link">trojan</a>
     
-    <a href="/tags/vmess/" style="font-size: 19.371692830639812px;" class="tag-cloud-link">vmess</a>
+    <a href="/tags/xray/" style="font-size: 16.538026762024565px;" class="tag-cloud-link">xray</a>
     
-    <a href="/tags/vless/" style="font-size: 17.12921962526802px;" class="tag-cloud-link">vless</a>
+    <a href="/tags/tools/" style="font-size: 19.22218443318789px;" class="tag-cloud-link">tools</a>
     
-    <a href="/tags/top/" style="font-size: 8.686009282152327px;" class="tag-cloud-link">top</a>
+    <a href="/tags/vaultwarden/" style="font-size: 18.35575083063407px;" class="tag-cloud-link">vaultwarden</a>
+    
+    <a href="/tags/vim/" style="font-size: 9.19591211916466px;" class="tag-cloud-link">vim</a>
+    
+    <a href="/tags/vmess/" style="font-size: 11.802725190898181px;" class="tag-cloud-link">vmess</a>
+    
+    <a href="/tags/vless/" style="font-size: 14.050212079047757px;" class="tag-cloud-link">vless</a>
     
 </div>
                 
@@ -637,8 +638,8 @@
 
 </script>
 <script>
-	POWERMODE.colorful = 'true';    // make power mode colorful
-	POWERMODE.shake = 'true';       // turn off shake
+  POWERMODE.colorful = 'true';    // make power mode colorful
+  POWERMODE.shake = 'true';          // enable/disable shake
 	// TODO 这里根据具体情况修改
 	document.body.addEventListener('input', POWERMODE);
 </script>

@@ -18,8 +18,7 @@
     
     
     <title>xray架设trojan节点 | 油炸小龙虾刺身</title>
-	<link rel="shortcut icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://bakasine.github.io" rel="prefetch" />
 
     
@@ -64,7 +63,7 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 7.0.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -156,14 +155,11 @@
         </div>
         <div class="tag-article">
             
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
                 
-                <a href="/tags/trojan/">trojan</a>, 
+                <span class="label label-gal"><i class="fa fa-tag"></i> <a href="/tags/trojan/">trojan</a></span>
                 
-                <a href="/tags/xray/">xray</a>
+                <span class="label label-gal"><i class="fa fa-tag"></i> <a href="/tags/xray/">xray</a></span>
                 
-            </span>
             
             <span class="label label-gal">
                 <i class="fa fa-calendar"></i> 2022-09-03
@@ -184,11 +180,10 @@
             </p>
             <p>
                 
-                <i class="fa fa-tags"></i>
                 
-                <a href="/tags/trojan/">trojan</a>, 
+                <i class="fa fa-tag"></i> <a href="/tags/trojan/">trojan</a>
                 
-                <a href="/tags/xray/">xray</a>
+                <i class="fa fa-tag"></i> <a href="/tags/xray/">xray</a>
                 
                 
                 
@@ -199,47 +194,47 @@
         <blockquote>
 <p>2022-11-13 17:22:21 更新一键安装脚本</p>
 </blockquote>
-<p><a href="#script">一键安装</a><br>
-<a href="#nginx">安装Nginx</a><br>
-<a href="#tls">申请证书</a><br>
-<a href="#install">安装Xray</a><br>
-<a href="#usetls">给Xray配置TLS证书</a><br>
-<a href="#configurate">配置Xray</a><br>
+<p><a href="#script">一键安装</a><br />
+<a href="#nginx">安装Nginx</a><br />
+<a href="#tls">申请证书</a><br />
+<a href="#install">安装Xray</a><br />
+<a href="#usetls">给Xray配置TLS证书</a><br />
+<a href="#configurate">配置Xray</a><br />
 <a href="#optimization">优化</a></p>
-<h1><h2 id="script">一键安装</h2></h1>
+<h1 id="h2-idscript一键安装h2"><a class="markdownIt-Anchor" href="#h2-idscript一键安装h2"></a> <h2 id="script">一键安装</h2></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate -q -O xray.sh <span class="string">&quot;https://raw.githubusercontent.com/uerax/xray-script/master/xray.sh&quot;</span> &amp;&amp; <span class="built_in">chmod</span> +x xray.sh &amp;&amp; bash xray.sh</span><br></pre></td></tr></table></figure>
-<h1><h2 id="nginx">安装nginx</h2></h1>
+<h1 id="h2-idnginx安装nginxh2"><a class="markdownIt-Anchor" href="#h2-idnginx安装nginxh2"></a> <h2 id="nginx">安装nginx</h2></h1>
 <ul>
 <li><strong>不推荐centos, 太折腾了</strong></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu debian</span></span><br><span class="line">sudo apt update &amp;&amp; sudo apt install -y nginx </span><br><span class="line"><span class="built_in">mkdir</span> -p /home/xray/webpage/ &amp;&amp; <span class="built_in">cd</span> /home/xray/webpage/</span><br><span class="line"><span class="comment"># https://html5up.net/ 随便找一个</span></span><br><span class="line">apt install unzip &amp;&amp; wget -O web.zip --no-check-certificate https://html5up.net/phantom/download &amp;&amp; unzip web.zip &amp;&amp; <span class="built_in">rm</span> web.zip</span><br></pre></td></tr></table></figure>
 <h3>修改nginx.conf</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 去除80端口默认占用</span></span><br><span class="line">sed -i <span class="string">&#x27;/\/etc\/nginx\/sites-enabled\//d&#x27;</span> /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制全部 start</span></span><br><span class="line"><span class="built_in">cat</span>&gt;/etc/nginx/conf.d/xray.conf&lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">server &#123;</span></span><br><span class="line"><span class="string">	listen 80;</span></span><br><span class="line"><span class="string">	server_name yourdomain;</span></span><br><span class="line"><span class="string">	root /home/xray/webpage/;</span></span><br><span class="line"><span class="string">	index index.html;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="comment"># 复制全部 end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 你的域名 替换</span></span><br><span class="line">sed -i <span class="string">&#x27;s/yourdomain/你的域名/&#x27;</span> /etc/nginx/conf.d/xray.conf</span><br><span class="line"></span><br><span class="line">systemctl reload nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问 http://你的域名 显示正常则成功</span></span><br></pre></td></tr></table></figure>
-<h1><h2 id="tls">申请证书</h2></h1>
+<h1 id="h2-idtls申请证书h2"><a class="markdownIt-Anchor" href="#h2-idtls申请证书h2"></a> <h2 id="tls">申请证书</h2></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget -O -  https://get.acme.sh | sh &amp;&amp; <span class="built_in">cd</span> ~ &amp;&amp; . .bashrc</span><br><span class="line">acme.sh --upgrade --auto-upgrade</span><br><span class="line">acme.sh --issue --server letsencrypt --<span class="built_in">test</span> -d 你的域名 -w /home/xray/webpage --keylength ec-256</span><br><span class="line"><span class="comment"># 显示证书和4行cert才成功</span></span><br><span class="line"></span><br><span class="line">acme.sh --set-default-ca --server letsencrypt</span><br><span class="line">acme.sh --issue -d 你的域名 -w /home/xray/webpage --keylength ec-256 --force</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1><h2 id="install">安装Xray</h2></h1>
-<h1><h3>脚本安装</h3></h1>
+<h1 id="h2-idinstall安装xrayh2"><a class="markdownIt-Anchor" href="#h2-idinstall安装xrayh2"></a> <h2 id="install">安装Xray</h2></h1>
+<h1 id="h3脚本安装h3"><a class="markdownIt-Anchor" href="#h3脚本安装h3"></a> <h3>脚本安装</h3></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/XTLS/Xray-install/raw/main/install-release.sh &amp;&amp; bash install-release.sh &amp;&amp; <span class="built_in">rm</span> install-release.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1><h3>手动安装</h3></h1>
-<h1><a target="_blank" rel="noopener" href="https://p4gefau1t.github.io/trojan-go/basic/full-config/">xray包</a></h1>
+<h1 id="h3手动安装h3"><a class="markdownIt-Anchor" href="#h3手动安装h3"></a> <h3>手动安装</h3></h1>
+<h1 id="xray包"><a class="markdownIt-Anchor" href="#xray包"></a> <a target="_blank" rel="noopener" href="https://p4gefau1t.github.io/trojan-go/basic/full-config/">xray包</a></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压到root目录下的xray文件夹 </span></span><br><span class="line">wget https://github.com/XTLS/Xray-core/releases/download/v1.5.10/Xray-linux-64.zip -O xray.zip &amp;&amp; unzip xray.zip -d /root/xray/ &amp;&amp; <span class="built_in">rm</span> xray.zip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 systemd 部署 start</span></span><br><span class="line"><span class="built_in">cat</span>&gt;/etc/systemd/system/xray.service&lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">[Unit]</span></span><br><span class="line"><span class="string">Description=Xray Service</span></span><br><span class="line"><span class="string">Documentation=https://github.com/xtls</span></span><br><span class="line"><span class="string">After=network.target nss-lookup.target</span></span><br><span class="line"><span class="string">[Service]</span></span><br><span class="line"><span class="string">User=root</span></span><br><span class="line"><span class="string">CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE</span></span><br><span class="line"><span class="string">AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE</span></span><br><span class="line"><span class="string">NoNewPrivileges=true</span></span><br><span class="line"><span class="string">ExecStart=/root/xray/xray run -config /usr/local/etc/xray/config.json</span></span><br><span class="line"><span class="string">Restart=on-failure</span></span><br><span class="line"><span class="string">RestartPreventExitStatus=23</span></span><br><span class="line"><span class="string">LimitNPROC=10000</span></span><br><span class="line"><span class="string">LimitNOFILE=1000000</span></span><br><span class="line"><span class="string">[Install]</span></span><br><span class="line"><span class="string">WantedBy=multi-user.target</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="comment"># end</span></span><br></pre></td></tr></table></figure>
-<h1><h2 id="usetls">给Xray配置TLS证书</h2></h1>
+<h1 id="h2-idusetls给xray配置tls证书h2"><a class="markdownIt-Anchor" href="#h2-idusetls给xray配置tls证书h2"></a> <h2 id="usetls">给Xray配置TLS证书</h2></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /home/xray/xray_cert &amp;&amp; acme.sh --install-cert -d 你的域名 --ecc --fullchain-file /home/xray/xray_cert/xray.crt --key-file /home/xray/xray_cert/xray.key &amp;&amp; <span class="built_in">chmod</span> +r /home/xray/xray_cert/xray.key</span><br></pre></td></tr></table></figure>
-<h1><h3>自动更新临期证书</h3></h1>
+<h1 id="h3自动更新临期证书h3"><a class="markdownIt-Anchor" href="#h3自动更新临期证书h3"></a> <h3>自动更新临期证书</h3></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建并写入</span></span><br><span class="line"><span class="built_in">cat</span>&gt;/home/xray/xray_cert/xray-cert-renew.sh&lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">#!/bin/bash</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">/root/.acme.sh/acme.sh --install-cert -d yourdomain --ecc --fullchain-file /home/xray/xray_cert/xray.crt --key-file /home/xray/xray_cert/xray.key</span></span><br><span class="line"><span class="string">echo &quot;Xray Certificates Renewed&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">chmod +r /home/xray/xray_cert/xray.key</span></span><br><span class="line"><span class="string">echo &quot;Read Permission Granted for Private Key&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">sudo systemctl restart xray</span></span><br><span class="line"><span class="string">echo &quot;Xray Restarted&quot;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 你的域名 替换</span></span><br><span class="line">sed -i <span class="string">&#x27;s/yourdomain/你的域名/&#x27;</span>  /home/xray/xray_cert/xray-cert-renew.sh</span><br></pre></td></tr></table></figure>
 <h3>创建定时任务</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x /home/xray/xray_cert/xray-cert-renew.sh</span><br><span class="line"></span><br><span class="line">( crontab -l | grep -v <span class="string">&quot;0 1 1 * *   bash /home/xray/xray_cert/xray-cert-renew.sh&quot;</span>; <span class="built_in">echo</span> <span class="string">&quot;0 1 1 * *   bash /home/xray/xray_cert/xray-cert-renew.sh&quot;</span> ) | crontab -</span><br></pre></td></tr></table></figure>
-<h1><h2 id="configurate">配置Xray</h2></h1>
+<h1 id="h2-idconfigurate配置xrayh2"><a class="markdownIt-Anchor" href="#h2-idconfigurate配置xrayh2"></a> <h2 id="configurate">配置Xray</h2></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xray uuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义日志 可选 start</span></span><br><span class="line"><span class="comment"># 默认日志位置 /var/log/xray</span></span><br><span class="line"><span class="built_in">mkdir</span> /home/xray/xray_log &amp;&amp; <span class="built_in">touch</span> /home/xray/xray_log/access.log &amp;&amp; <span class="built_in">touch</span> /home/xray/xray_log/error.log &amp;&amp; <span class="built_in">chmod</span> a+w /home/xray/xray_log/*.<span class="built_in">log</span></span><br><span class="line"><span class="comment"># end</span></span><br></pre></td></tr></table></figure>
-<h1><h3>模板文件修改</h3></h1>
-<h1><a target="_blank" rel="noopener" href="https://github.com/XTLS/Xray-examples">配置文件模板库</a></h1>
+<h1 id="h3模板文件修改h3"><a class="markdownIt-Anchor" href="#h3模板文件修改h3"></a> <h3>模板文件修改</h3></h1>
+<h1 id="配置文件模板库"><a class="markdownIt-Anchor" href="#配置文件模板库"></a> <a target="_blank" rel="noopener" href="https://github.com/XTLS/Xray-examples">配置文件模板库</a></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/XTLS/Xray-examples/main/Trojan-TCP-XTLS/config_server.json -O /usr/local/etc/xray/config.json</span><br><span class="line"></span><br><span class="line">sed -i <span class="string">&#x27;s/\/path\/to\/cert/\/home\/xray\/xray_cert\/xray.crt/&#x27;</span> /usr/local/etc/xray/config.json</span><br><span class="line"></span><br><span class="line">sed -i <span class="string">&#x27;s/\/path\/to\/key/\/home\/xray\/xray_cert\/xray.key/&#x27;</span> /usr/local/etc/xray/config.json</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1><h3>启动Xray</h3></h1>
+<h1 id="h3启动xrayh3"><a class="markdownIt-Anchor" href="#h3启动xrayh3"></a> <h3>启动Xray</h3></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 脚本安装方式</span><br><span class="line">systemctl start xray &amp;&amp; systemctl <span class="built_in">enable</span> xray</span><br><span class="line">// 手动安装方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1><h2 id="optimization">优化</h2></h1>
-<h1><h3>开启bbr</h3></h1>
-<h1><a href="/2022/09/27/bbr/" title="bbr加速">开启bbr加速</a></h1>
-<h1><h3>开启 HTTP 自动跳转 HTTPS</h3></h1>
+<h1 id="h2-idoptimization优化h2"><a class="markdownIt-Anchor" href="#h2-idoptimization优化h2"></a> <h2 id="optimization">优化</h2></h1>
+<h1 id="h3开启bbrh3"><a class="markdownIt-Anchor" href="#h3开启bbrh3"></a> <h3>开启bbr</h3></h1>
+<h1 id="-swig13-"><a class="markdownIt-Anchor" href="#-swig13-"></a> <a href="/2022/09/27/bbr/" title="bbr加速">开启bbr加速</a></h1>
+<h1 id="h3开启-http-自动跳转-httpsh3"><a class="markdownIt-Anchor" href="#h3开启-http-自动跳转-httpsh3"></a> <h3>开启 HTTP 自动跳转 HTTPS</h3></h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sed -i <span class="string">&#x27;/\/home\/xray\/webpage\//d&#x27;</span> /etc/nginx/conf.d/xray.conf</span><br><span class="line">sed -i <span class="string">&#x27;/index/d&#x27;</span> /etc/nginx/conf.d/xray.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在80端口规则最后加入 可同时删除root和index两行</span></span><br><span class="line">sed -i <span class="string">&#x27;3a \\treturn 301 https://$http_host$request_uri;&#x27;</span> /etc/nginx/conf.d/xray.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">#在加入新的server</span></span><br><span class="line"><span class="built_in">cat</span>&gt;&gt;/etc/nginx/conf.d/xray.conf&lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">server &#123;</span></span><br><span class="line"><span class="string">   listen 127.0.0.1:8080;</span></span><br><span class="line"><span class="string">   root /home/xray/webpage/;</span></span><br><span class="line"><span class="string">   index index.html;</span></span><br><span class="line"><span class="string">   add_header Strict-Transport-Security &quot;max-age=63072000&quot; always;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="comment">#end</span></span><br><span class="line"></span><br><span class="line">systemctl restart nginx</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改xray的fallback端口为8080 &quot;dest&quot;: 80 -&gt; 改成 &quot;dest&quot;: 8080</span></span><br><span class="line">sed -i <span class="string">&#x27;19,24d&#x27;</span> /usr/local/etc/xray/config.json</span><br><span class="line"></span><br><span class="line">sudo sed -i <span class="string">&#x27;s/\&quot;dest\&quot;.*/&quot;dest&quot;: 8080/g&#x27;</span> /usr/local/etc/xray/config.json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl restart xray</span><br></pre></td></tr></table></figure>
     </div>
 </article>
@@ -301,7 +296,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2099/01/01/aq-collection/">合订本</a>
+                    <a href="/2026/01/02/mihomo/">Mihomo 裸核运行</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2026/01/02/vaultwarden/">自建 Vaultwarden 密码管理</a>
                 </span>
             </li>
             
@@ -353,12 +354,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/15/mining-rental/">矿机租赁</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -377,19 +372,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/08/19/auto-script/">简单的自动抢购脚本编写方法</a>
+                    <a href="/2023/02/26/ai-voice/">搭建 AI 语音 TTS 服务</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2022/09/09/dota2-rpg/">dota2游廊RPG地图制作</a>
+                    <a href="/2023/05/15/giffgaff/">giffgaff 申请和保号</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2022/09/10/lua-note/">lua笔记</a>
+                    <a href="/2024/12/14/grafana/">Prometheus + Grafana 搭建服务器监控系统</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/15/git-note/">Git学习</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/03/10/kamifaka/">搭建自动发卡平台</a>
                 </span>
             </li>
             
@@ -407,31 +414,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/06/26/paypalfees/">PayPal 更换汇率结算</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2022/09/01/quantumult-x/">ios去广告、分流、代理</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/04/30/search-danmuku/">B站下架视频搜索和弹幕获取</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/11/28/server-speeder/">锐速</a>
+                    <a href="/2024/02/12/monero-wallet/">门罗币类钱包挖矿使用指北</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2025/12/07/top/">Top 命令</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2026/01/02/vaultwarden/">自建 Vaultwarden 密码管理</a>
                 </span>
             </li>
             
@@ -464,117 +459,123 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/ai/" style="font-size: 12.456902783790508px;" class="tag-cloud-link">ai</a>
+    <a href="/tags/qa/" style="font-size: 18.147951469741276px;" class="tag-cloud-link">qa</a>
     
-    <a href="/tags/vits/" style="font-size: 19.866025948679354px;" class="tag-cloud-link">vits</a>
+    <a href="/tags/ai/" style="font-size: 13.57473076476569px;" class="tag-cloud-link">ai</a>
     
-    <a href="/tags/qa/" style="font-size: 10.118190610792839px;" class="tag-cloud-link">qa</a>
+    <a href="/tags/vits/" style="font-size: 13.074113980031953px;" class="tag-cloud-link">vits</a>
     
-    <a href="/tags/linux/" style="font-size: 11.530414495257439px;" class="tag-cloud-link">linux</a>
+    <a href="/tags/linux/" style="font-size: 11.84011692130834px;" class="tag-cloud-link">linux</a>
     
-    <a href="/tags/shell/" style="font-size: 17.799469566430233px;" class="tag-cloud-link">shell</a>
+    <a href="/tags/shell/" style="font-size: 19.665111212241676px;" class="tag-cloud-link">shell</a>
     
-    <a href="/tags/nodejs/" style="font-size: 19.677589395264782px;" class="tag-cloud-link">nodejs</a>
+    <a href="/tags/nodejs/" style="font-size: 19.34637549830538px;" class="tag-cloud-link">nodejs</a>
     
-    <a href="/tags/bbr/" style="font-size: 12.251786872629644px;" class="tag-cloud-link">bbr</a>
+    <a href="/tags/bbr/" style="font-size: 15.911527585633948px;" class="tag-cloud-link">bbr</a>
     
-    <a href="/tags/clash/" style="font-size: 15.225177609537873px;" class="tag-cloud-link">clash</a>
+    <a href="/tags/clash/" style="font-size: 12.339829957264046px;" class="tag-cloud-link">clash</a>
     
-    <a href="/tags/cfw/" style="font-size: 8.46339386027092px;" class="tag-cloud-link">cfw</a>
+    <a href="/tags/cfw/" style="font-size: 13.422088429191302px;" class="tag-cloud-link">cfw</a>
     
-    <a href="/tags/note/" style="font-size: 16.874710343243493px;" class="tag-cloud-link">note</a>
+    <a href="/tags/dota2/" style="font-size: 11.32969199238991px;" class="tag-cloud-link">dota2</a>
     
-    <a href="/tags/crypto/" style="font-size: 19.610894100824044px;" class="tag-cloud-link">crypto</a>
+    <a href="/tags/rpg/" style="font-size: 19.863021070268363px;" class="tag-cloud-link">rpg</a>
     
-    <a href="/tags/contract/" style="font-size: 14.813829219380192px;" class="tag-cloud-link">contract</a>
+    <a href="/tags/ffmpeg/" style="font-size: 8.720426618702426px;" class="tag-cloud-link">ffmpeg</a>
     
-    <a href="/tags/dota2/" style="font-size: 18.65642860747426px;" class="tag-cloud-link">dota2</a>
+    <a href="/tags/frp/" style="font-size: 18.134654759284064px;" class="tag-cloud-link">frp</a>
     
-    <a href="/tags/rpg/" style="font-size: 17.914303728634486px;" class="tag-cloud-link">rpg</a>
+    <a href="/tags/sim/" style="font-size: 17.06683648021845px;" class="tag-cloud-link">sim</a>
     
-    <a href="/tags/ffmpeg/" style="font-size: 9.218936205856345px;" class="tag-cloud-link">ffmpeg</a>
+    <a href="/tags/note/" style="font-size: 12.014344371072816px;" class="tag-cloud-link">note</a>
     
-    <a href="/tags/frp/" style="font-size: 9.534074656071937px;" class="tag-cloud-link">frp</a>
+    <a href="/tags/crypto/" style="font-size: 12.621497435503635px;" class="tag-cloud-link">crypto</a>
     
-    <a href="/tags/sim/" style="font-size: 11.04392024687304px;" class="tag-cloud-link">sim</a>
+    <a href="/tags/contract/" style="font-size: 18.4359201132513px;" class="tag-cloud-link">contract</a>
     
-    <a href="/tags/git/" style="font-size: 16.25722381722591px;" class="tag-cloud-link">git</a>
+    <a href="/tags/prometheus/" style="font-size: 11.063145623128127px;" class="tag-cloud-link">prometheus</a>
     
-    <a href="/tags/prometheus/" style="font-size: 14.568065387226728px;" class="tag-cloud-link">prometheus</a>
+    <a href="/tags/grafana/" style="font-size: 13.190266050005688px;" class="tag-cloud-link">grafana</a>
     
-    <a href="/tags/grafana/" style="font-size: 16.487927726464797px;" class="tag-cloud-link">grafana</a>
+    <a href="/tags/docker/" style="font-size: 10.008403807273165px;" class="tag-cloud-link">docker</a>
     
-    <a href="/tags/docker/" style="font-size: 9.823637663846181px;" class="tag-cloud-link">docker</a>
+    <a href="/tags/hexo/" style="font-size: 9.360302470953403px;" class="tag-cloud-link">hexo</a>
     
-    <a href="/tags/hexo/" style="font-size: 12.150045101456438px;" class="tag-cloud-link">hexo</a>
+    <a href="/tags/github/" style="font-size: 19.90960567711847px;" class="tag-cloud-link">github</a>
     
-    <a href="/tags/github/" style="font-size: 11.067756528679832px;" class="tag-cloud-link">github</a>
+    <a href="/tags/git/" style="font-size: 18.902776305574704px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/danmu/" style="font-size: 12.321124943916022px;" class="tag-cloud-link">danmu</a>
+    <a href="/tags/danmu/" style="font-size: 18.51815886181621px;" class="tag-cloud-link">danmu</a>
     
-    <a href="/tags/image/" style="font-size: 16.11916640628776px;" class="tag-cloud-link">image</a>
+    <a href="/tags/image/" style="font-size: 16.288743571299175px;" class="tag-cloud-link">image</a>
     
-    <a href="/tags/interview/" style="font-size: 10.61078325653768px;" class="tag-cloud-link">interview</a>
+    <a href="/tags/interview/" style="font-size: 14.012010311380717px;" class="tag-cloud-link">interview</a>
     
-    <a href="/tags/zerotier/" style="font-size: 13.931366764320423px;" class="tag-cloud-link">zerotier</a>
+    <a href="/tags/zerotier/" style="font-size: 17.033060462124922px;" class="tag-cloud-link">zerotier</a>
     
-    <a href="/tags/web/" style="font-size: 10.029315544908513px;" class="tag-cloud-link">web</a>
+    <a href="/tags/web/" style="font-size: 19.293624431484666px;" class="tag-cloud-link">web</a>
     
-    <a href="/tags/lua/" style="font-size: 9.858738584784959px;" class="tag-cloud-link">lua</a>
+    <a href="/tags/mac/" style="font-size: 16.508883270655893px;" class="tag-cloud-link">mac</a>
     
-    <a href="/tags/mac/" style="font-size: 11.476422228473849px;" class="tag-cloud-link">mac</a>
+    <a href="/tags/issue/" style="font-size: 16.526985558756316px;" class="tag-cloud-link">issue</a>
     
-    <a href="/tags/issue/" style="font-size: 9.719190529400933px;" class="tag-cloud-link">issue</a>
+    <a href="/tags/email/" style="font-size: 11.567996452287652px;" class="tag-cloud-link">email</a>
     
-    <a href="/tags/mining/" style="font-size: 8.158445495535165px;" class="tag-cloud-link">mining</a>
+    <a href="/tags/lua/" style="font-size: 19.500614237123745px;" class="tag-cloud-link">lua</a>
     
-    <a href="/tags/email/" style="font-size: 18.628895909255515px;" class="tag-cloud-link">email</a>
+    <a href="/tags/mihomo/" style="font-size: 16.471497613920633px;" class="tag-cloud-link">mihomo</a>
     
-    <a href="/tags/zephyr/" style="font-size: 10.350478879985655px;" class="tag-cloud-link">zephyr</a>
+    <a href="/tags/nssm/" style="font-size: 17.551610288102534px;" class="tag-cloud-link">nssm</a>
     
-    <a href="/tags/xmrig/" style="font-size: 15.47993036566029px;" class="tag-cloud-link">xmrig</a>
+    <a href="/tags/mining/" style="font-size: 17.823765301723583px;" class="tag-cloud-link">mining</a>
     
-    <a href="/tags/monero/" style="font-size: 17.372733233141652px;" class="tag-cloud-link">monero</a>
+    <a href="/tags/zephyr/" style="font-size: 18.00148078264966px;" class="tag-cloud-link">zephyr</a>
     
-    <a href="/tags/netch/" style="font-size: 8.792553830172054px;" class="tag-cloud-link">netch</a>
+    <a href="/tags/xmrig/" style="font-size: 12.036707864080785px;" class="tag-cloud-link">xmrig</a>
     
-    <a href="/tags/openwrt/" style="font-size: 10.285487993730044px;" class="tag-cloud-link">openwrt</a>
+    <a href="/tags/monero/" style="font-size: 15.164682542505663px;" class="tag-cloud-link">monero</a>
     
-    <a href="/tags/openclash/" style="font-size: 18.228910890148143px;" class="tag-cloud-link">openclash</a>
+    <a href="/tags/netch/" style="font-size: 9.74496353410558px;" class="tag-cloud-link">netch</a>
     
-    <a href="/tags/oracle/" style="font-size: 9.252519996691253px;" class="tag-cloud-link">oracle</a>
+    <a href="/tags/openwrt/" style="font-size: 13.436555583638652px;" class="tag-cloud-link">openwrt</a>
     
-    <a href="/tags/paypal/" style="font-size: 14.786259622985336px;" class="tag-cloud-link">paypal</a>
+    <a href="/tags/openclash/" style="font-size: 9.629381828047586px;" class="tag-cloud-link">openclash</a>
     
-    <a href="/tags/quantumultx/" style="font-size: 15.180323708686938px;" class="tag-cloud-link">quantumultx</a>
+    <a href="/tags/oracle/" style="font-size: 14.977618369582935px;" class="tag-cloud-link">oracle</a>
     
-    <a href="/tags/ios/" style="font-size: 15.906273312464895px;" class="tag-cloud-link">ios</a>
+    <a href="/tags/paypal/" style="font-size: 14.869775499740399px;" class="tag-cloud-link">paypal</a>
     
-    <a href="/tags/debian/" style="font-size: 13.657760552380502px;" class="tag-cloud-link">debian</a>
+    <a href="/tags/quantumultx/" style="font-size: 18.983497031157277px;" class="tag-cloud-link">quantumultx</a>
     
-    <a href="/tags/ubuntu/" style="font-size: 17.00047215878003px;" class="tag-cloud-link">ubuntu</a>
+    <a href="/tags/ios/" style="font-size: 8.92578041952388px;" class="tag-cloud-link">ios</a>
     
-    <a href="/tags/regex/" style="font-size: 15.54541458346963px;" class="tag-cloud-link">regex</a>
+    <a href="/tags/debian/" style="font-size: 12.375273194495382px;" class="tag-cloud-link">debian</a>
     
-    <a href="/tags/cutout/" style="font-size: 9.326194983101065px;" class="tag-cloud-link">cutout</a>
+    <a href="/tags/ubuntu/" style="font-size: 12.2683931620722px;" class="tag-cloud-link">ubuntu</a>
     
-    <a href="/tags/sms/" style="font-size: 14.311303940165619px;" class="tag-cloud-link">sms</a>
+    <a href="/tags/regex/" style="font-size: 18.990762599554174px;" class="tag-cloud-link">regex</a>
     
-    <a href="/tags/SSR/" style="font-size: 8.429896703573856px;" class="tag-cloud-link">SSR</a>
+    <a href="/tags/cutout/" style="font-size: 14.524510232439896px;" class="tag-cloud-link">cutout</a>
     
-    <a href="/tags/trojan/" style="font-size: 19.916490236594292px;" class="tag-cloud-link">trojan</a>
+    <a href="/tags/sms/" style="font-size: 15.138565501254519px;" class="tag-cloud-link">sms</a>
     
-    <a href="/tags/xray/" style="font-size: 19.077071342583757px;" class="tag-cloud-link">xray</a>
+    <a href="/tags/SSR/" style="font-size: 9.085537934622671px;" class="tag-cloud-link">SSR</a>
     
-    <a href="/tags/tools/" style="font-size: 19.845732115959553px;" class="tag-cloud-link">tools</a>
+    <a href="/tags/top/" style="font-size: 17.09219404264185px;" class="tag-cloud-link">top</a>
     
-    <a href="/tags/vim/" style="font-size: 8.931483286326085px;" class="tag-cloud-link">vim</a>
+    <a href="/tags/trojan/" style="font-size: 9.409338165874004px;" class="tag-cloud-link">trojan</a>
     
-    <a href="/tags/vmess/" style="font-size: 8.567828495795055px;" class="tag-cloud-link">vmess</a>
+    <a href="/tags/xray/" style="font-size: 10.051276140733625px;" class="tag-cloud-link">xray</a>
     
-    <a href="/tags/vless/" style="font-size: 17.210419452263885px;" class="tag-cloud-link">vless</a>
+    <a href="/tags/tools/" style="font-size: 15.503901841742477px;" class="tag-cloud-link">tools</a>
     
-    <a href="/tags/top/" style="font-size: 11.154724898806482px;" class="tag-cloud-link">top</a>
+    <a href="/tags/vaultwarden/" style="font-size: 15.982787796887173px;" class="tag-cloud-link">vaultwarden</a>
+    
+    <a href="/tags/vim/" style="font-size: 10.77501372294461px;" class="tag-cloud-link">vim</a>
+    
+    <a href="/tags/vmess/" style="font-size: 8.328145868138938px;" class="tag-cloud-link">vmess</a>
+    
+    <a href="/tags/vless/" style="font-size: 11.97500001451853px;" class="tag-cloud-link">vless</a>
     
 </div>
                 
@@ -670,8 +671,8 @@
 
 </script>
 <script>
-	POWERMODE.colorful = 'true';    // make power mode colorful
-	POWERMODE.shake = 'true';       // turn off shake
+  POWERMODE.colorful = 'true';    // make power mode colorful
+  POWERMODE.shake = 'true';          // enable/disable shake
 	// TODO 这里根据具体情况修改
 	document.body.addEventListener('input', POWERMODE);
 </script>
