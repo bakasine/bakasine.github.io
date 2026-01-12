@@ -4701,6 +4701,18 @@ ul.pills-gal li a:hover {
   background-color: rgb(74, 74, 74);
 }
 
+#sidebar-pixiv .iframe-wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+#sidebar-pixiv iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 240/380;
+  display: block;
+  border: 0;
+}
+
 #sidebar-recent_comments .author-avatar .avatar {
   border-radius: 50%;
   border: 1px solid #eee;
