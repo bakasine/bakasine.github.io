@@ -3581,13 +3581,6 @@ button.close {
 .content-article {
   /* 恢复默认，移除自定义 blockquote 样式 */
   text-align: justify;
-  /* 现代椭圆面板列表样式 */
-  /* 只保留嵌套子级li的圆点，父级li如果有ul或ol则不显示圆点 */
-  /* 无序列表标记 - 优雅的渐变圆点 */
-  /* 有序列表标记 */
-  /* 嵌套列表样式 */
-  /* 二级嵌套列表标记 - 使用更具体的选择器 */
-  /* 三级嵌套列表 */
   /* 代码块复制按钮 */
 }
 .content-article code {
@@ -3622,137 +3615,6 @@ button.close {
   border-radius: 0;
   line-height: 1.6;
   font-size: 16px;
-}
-.content-article ul,
-.content-article ol {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 30px;
-}
-.content-article ul li,
-.content-article ol li {
-  position: relative;
-  margin-bottom: 16px;
-  padding: 16px 32px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: rgba(0, 0, 0, 0.8);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0);
-}
-.content-article ul li:hover,
-.content-article ol li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 6px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.2);
-}
-.content-article ul li:has(ul),
-.content-article ul li:has(ol) {
-  position: relative;
-}
-.content-article ul li:has(ul)::before,
-.content-article ul li:has(ol)::before {
-  display: none !important;
-}
-.content-article ul li::before {
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
-}
-.content-article ol {
-  counter-reset: list-counter;
-}
-.content-article ol li {
-  counter-increment: list-counter;
-  padding-left: 48px;
-}
-.content-article ol li::before {
-  content: counter(list-counter);
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background: linear-gradient(135deg, #00bfff, #0080ff);
-  color: white;
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
-  backdrop-filter: blur(10px);
-}
-.content-article ul ul,
-.content-article ol ol,
-.content-article ul ol,
-.content-article ol ul {
-  margin-top: 12px;
-  margin-bottom: 0;
-  padding-left: 0;
-}
-.content-article ul ul li,
-.content-article ol ol li,
-.content-article ul ol li,
-.content-article ol ul li {
-  margin-bottom: 8px;
-  padding: 12px 20px 12px 32px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  font-size: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-.content-article ul > li > ul > li::before {
-  left: 16px;
-  width: 6px;
-  height: 6px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
-}
-.content-article ol > li > ol > li::before {
-  left: 16px;
-  width: 18px;
-  height: 18px;
-  font-size: 10px;
-  background: linear-gradient(135deg, rgba(0, 191, 255, 0.8), rgba(0, 128, 255, 0.6));
-}
-.content-article ul > li > ul > li > ul > li,
-.content-article ol > li > ol > li > ol > li,
-.content-article ul > li > ol > li > ul > li,
-.content-article ol > li > ul > li > ol > li {
-  padding-left: 44px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  font-size: 13px;
-}
-.content-article ul > li > ul > li > ul > li::before {
-  left: 20px;
-  width: 4px;
-  height: 4px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
-}
-.content-article ol > li > ol > li > ol > li::before {
-  left: 20px;
-  width: 16px;
-  height: 16px;
-  font-size: 9px;
-  background: linear-gradient(135deg, rgba(0, 191, 255, 0.6), rgba(0, 128, 255, 0.4));
 }
 .content-article p {
   font-size: 14px;
@@ -6426,5 +6288,651 @@ ul.pills-gal li a:hover {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+.content-article,
+.article .content-article,
+.article-body .content-article,
+.article-content,
+.post-content,
+.markdown-body {
+  line-height: 1.75;
+  color: #3d4450;
+  font-size: 16px;
+  /* 
+                                                                                                                                       * Enhanced List Styles
+                                                                                                                                       * Redesigned for a cleaner, premium look
+                                                                                                                                       */
+  /* ensure content area has a little inner padding so list numbers never touch rounded container edges */
+}
+.content-article h1,
+.content-article h2,
+.content-article h3,
+.content-article h4,
+.content-article h5,
+.content-article h6,
+.article .content-article h1,
+.article .content-article h2,
+.article .content-article h3,
+.article .content-article h4,
+.article .content-article h5,
+.article .content-article h6,
+.article-body .content-article h1,
+.article-body .content-article h2,
+.article-body .content-article h3,
+.article-body .content-article h4,
+.article-body .content-article h5,
+.article-body .content-article h6,
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6,
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6,
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.content-article p,
+.article .content-article p,
+.article-body .content-article p,
+.article-content p,
+.post-content p,
+.markdown-body p {
+  margin: 0 0 1em;
+}
+.content-article a,
+.article .content-article a,
+.article-body .content-article a,
+.article-content a,
+.post-content a,
+.markdown-body a {
+  color: #d2322d;
+  text-decoration: none;
+}
+.content-article a:hover,
+.article .content-article a:hover,
+.article-body .content-article a:hover,
+.article-content a:hover,
+.post-content a:hover,
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+.content-article blockquote,
+.article .content-article blockquote,
+.article-body .content-article blockquote,
+.article-content blockquote,
+.post-content blockquote,
+.markdown-body blockquote {
+  margin: 0 0 1em;
+  padding: 0.6em 1em;
+  color: #576273;
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 4px solid rgba(0, 0, 0, 0.08);
+}
+.content-article pre,
+.content-article code,
+.article .content-article pre,
+.article .content-article code,
+.article-body .content-article pre,
+.article-body .content-article code,
+.article-content pre,
+.article-content code,
+.post-content pre,
+.post-content code,
+.markdown-body pre,
+.markdown-body code {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.content-article pre,
+.article .content-article pre,
+.article-body .content-article pre,
+.article-content pre,
+.post-content pre,
+.markdown-body pre {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1em;
+  border-radius: 6px;
+  overflow: auto;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 1em;
+}
+.content-article code,
+.article .content-article code,
+.article-body .content-article code,
+.article-content code,
+.post-content code,
+.markdown-body code {
+  background: rgba(255, 230, 230, 0.4);
+  /* Softer reddish background */
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.95em;
+  color: #e96900;
+  /* Vibrant orange for visibility */
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.content-article table:not(.highlight table),
+.article .content-article table:not(.highlight table),
+.article-body .content-article table:not(.highlight table),
+.article-content table:not(.highlight table),
+.post-content table:not(.highlight table),
+.markdown-body table:not(.highlight table) {
+  width: 100%;
+  margin: 0 0 1em;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
+  max-width: 100%;
+  /* Remove harsh zebra; use subtle hover highlight */
+  /* Rounded corners for top/bottom rows */
+  /* Make tables scroll horizontally on small screens without breaking layout */
+}
+.content-article table:not(.highlight table) th,
+.content-article table:not(.highlight table) td,
+.article .content-article table:not(.highlight table) th,
+.article .content-article table:not(.highlight table) td,
+.article-body .content-article table:not(.highlight table) th,
+.article-body .content-article table:not(.highlight table) td,
+.article-content table:not(.highlight table) th,
+.article-content table:not(.highlight table) td,
+.post-content table:not(.highlight table) th,
+.post-content table:not(.highlight table) td,
+.markdown-body table:not(.highlight table) th,
+.markdown-body table:not(.highlight table) td {
+  padding: 0.75em 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: rgb(51, 51, 51);
+  vertical-align: top;
+}
+.content-article table:not(.highlight table) thead th,
+.article .content-article table:not(.highlight table) thead th,
+.article-body .content-article table:not(.highlight table) thead th,
+.article-content table:not(.highlight table) thead th,
+.post-content table:not(.highlight table) thead th,
+.markdown-body table:not(.highlight table) thead th {
+  background: rgba(0, 0, 0, 0.03);
+  font-weight: 600;
+  color: #3d4450;
+  text-align: left;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+}
+.content-article table:not(.highlight table) tbody tr,
+.article .content-article table:not(.highlight table) tbody tr,
+.article-body .content-article table:not(.highlight table) tbody tr,
+.article-content table:not(.highlight table) tbody tr,
+.post-content table:not(.highlight table) tbody tr,
+.markdown-body table:not(.highlight table) tbody tr {
+  background: transparent;
+  transition: background 0.12s ease-in-out;
+}
+.content-article table:not(.highlight table) tbody tr:hover,
+.article .content-article table:not(.highlight table) tbody tr:hover,
+.article-body .content-article table:not(.highlight table) tbody tr:hover,
+.article-content table:not(.highlight table) tbody tr:hover,
+.post-content table:not(.highlight table) tbody tr:hover,
+.markdown-body table:not(.highlight table) tbody tr:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+.content-article table:not(.highlight table) thead th:first-child,
+.article .content-article table:not(.highlight table) thead th:first-child,
+.article-body .content-article table:not(.highlight table) thead th:first-child,
+.article-content table:not(.highlight table) thead th:first-child,
+.post-content table:not(.highlight table) thead th:first-child,
+.markdown-body table:not(.highlight table) thead th:first-child {
+  border-top-left-radius: 6px;
+}
+.content-article table:not(.highlight table) thead th:last-child,
+.article .content-article table:not(.highlight table) thead th:last-child,
+.article-body .content-article table:not(.highlight table) thead th:last-child,
+.article-content table:not(.highlight table) thead th:last-child,
+.post-content table:not(.highlight table) thead th:last-child,
+.markdown-body table:not(.highlight table) thead th:last-child {
+  border-top-right-radius: 6px;
+}
+.content-article table:not(.highlight table) tbody tr:last-child td:first-child,
+.article .content-article table:not(.highlight table) tbody tr:last-child td:first-child,
+.article-body .content-article table:not(.highlight table) tbody tr:last-child td:first-child,
+.article-content table:not(.highlight table) tbody tr:last-child td:first-child,
+.post-content table:not(.highlight table) tbody tr:last-child td:first-child,
+.markdown-body table:not(.highlight table) tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+.content-article table:not(.highlight table) tbody tr:last-child td:last-child,
+.article .content-article table:not(.highlight table) tbody tr:last-child td:last-child,
+.article-body .content-article table:not(.highlight table) tbody tr:last-child td:last-child,
+.article-content table:not(.highlight table) tbody tr:last-child td:last-child,
+.post-content table:not(.highlight table) tbody tr:last-child td:last-child,
+.markdown-body table:not(.highlight table) tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
+}
+.content-article table:not(.highlight table).markdown-table-responsive,
+.article .content-article table:not(.highlight table).markdown-table-responsive,
+.article-body .content-article table:not(.highlight table).markdown-table-responsive,
+.article-content table:not(.highlight table).markdown-table-responsive,
+.post-content table:not(.highlight table).markdown-table-responsive,
+.markdown-body table:not(.highlight table).markdown-table-responsive {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+.content-article img,
+.article .content-article img,
+.article-body .content-article img,
+.article-content img,
+.post-content img,
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.6em 0;
+}
+.content-article ul,
+.content-article ol,
+.article .content-article ul,
+.article .content-article ol,
+.article-body .content-article ul,
+.article-body .content-article ol,
+.article-content ul,
+.article-content ol,
+.post-content ul,
+.post-content ol,
+.markdown-body ul,
+.markdown-body ol {
+  margin: 0 0 1em 1.25em;
+}
+.content-article ul,
+.content-article ol,
+.article .content-article ul,
+.article .content-article ol,
+.article-body .content-article ul,
+.article-body .content-article ol,
+.article-content ul,
+.article-content ol,
+.post-content ul,
+.post-content ol,
+.markdown-body ul,
+.markdown-body ol {
+  margin: 1em 0 1.5em 1.5em;
+  padding-left: 0;
+}
+.content-article ul > li,
+.content-article ol > li,
+.article .content-article ul > li,
+.article .content-article ol > li,
+.article-body .content-article ul > li,
+.article-body .content-article ol > li,
+.article-content ul > li,
+.article-content ol > li,
+.post-content ul > li,
+.post-content ol > li,
+.markdown-body ul > li,
+.markdown-body ol > li {
+  position: relative;
+  margin: 0.8em 0;
+  font-weight: 600;
+  /* Requested bold default */
+  color: #3d4450;
+  transition: all 0.2s ease;
+}
+.content-article ul > li:hover,
+.content-article ol > li:hover,
+.article .content-article ul > li:hover,
+.article .content-article ol > li:hover,
+.article-body .content-article ul > li:hover,
+.article-body .content-article ol > li:hover,
+.article-content ul > li:hover,
+.article-content ol > li:hover,
+.post-content ul > li:hover,
+.post-content ol > li:hover,
+.markdown-body ul > li:hover,
+.markdown-body ol > li:hover {
+  color: #535d6d;
+}
+.content-article ul,
+.article .content-article ul,
+.article-body .content-article ul,
+.article-content ul,
+.post-content ul,
+.markdown-body ul {
+  list-style: none;
+}
+.content-article ul > li,
+.article .content-article ul > li,
+.article-body .content-article ul > li,
+.article-content ul > li,
+.post-content ul > li,
+.markdown-body ul > li {
+  padding-left: 1.5em;
+}
+.content-article ul > li:before,
+.article .content-article ul > li:before,
+.article-body .content-article ul > li:before,
+.article-content ul > li:before,
+.post-content ul > li:before,
+.markdown-body ul > li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.4em;
+  height: 0.4em;
+  background: #fff;
+  border: 2px solid #d2322d;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.content-article ul > li:hover:before,
+.article .content-article ul > li:hover:before,
+.article-body .content-article ul > li:hover:before,
+.article-content ul > li:hover:before,
+.post-content ul > li:hover:before,
+.markdown-body ul > li:hover:before {
+  background: #d2322d;
+  transform: scale(1.2);
+}
+.content-article ul ul > li:before,
+.article .content-article ul ul > li:before,
+.article-body .content-article ul ul > li:before,
+.article-content ul ul > li:before,
+.post-content ul ul > li:before,
+.markdown-body ul ul > li:before {
+  width: 0.35em;
+  height: 0.35em;
+  border-color: #e0706c;
+}
+.content-article ol,
+.article .content-article ol,
+.article-body .content-article ol,
+.article-content ol,
+.post-content ol,
+.markdown-body ol {
+  counter-reset: gal-ol-counter;
+  list-style: none;
+}
+.content-article ol > li,
+.article .content-article ol > li,
+.article-body .content-article ol > li,
+.article-content ol > li,
+.post-content ol > li,
+.markdown-body ol > li {
+  padding-left: 2.5em;
+  counter-increment: gal-ol-counter;
+}
+.content-article ol > li:hover,
+.article .content-article ol > li:hover,
+.article-body .content-article ol > li:hover,
+.article-content ol > li:hover,
+.post-content ol > li:hover,
+.markdown-body ol > li:hover {
+  transform: translateX(4px);
+}
+.content-article ol > li:before,
+.article .content-article ol > li:before,
+.article-body .content-article ol > li:before,
+.article-content ol > li:before,
+.post-content ol > li:before,
+.markdown-body ol > li:before {
+  content: counter(gal-ol-counter) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.5em;
+  height: auto;
+  line-height: 1.75;
+  text-align: left;
+  color: #6b69d6;
+  font-family: "Microsoft Yahei", Helvetica, Arial, sans-serif;
+  font-size: 1.1em;
+  font-weight: 800;
+  opacity: 1;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  transition: all 0.3s ease;
+}
+.content-article ol > li:hover:before,
+.article .content-article ol > li:hover:before,
+.article-body .content-article ol > li:hover:before,
+.article-content ol > li:hover:before,
+.post-content ol > li:hover:before,
+.markdown-body ol > li:hover:before {
+  color: #4341cb;
+  transform: translateX(-2px);
+}
+.content-article ol ol > li:before,
+.article .content-article ol ol > li:before,
+.article-body .content-article ol ol > li:before,
+.article-content ol ol > li:before,
+.post-content ol ol > li:before,
+.markdown-body ol ol > li:before {
+  font-size: 1em;
+  font-weight: 700;
+  opacity: 0.8;
+}
+.content-article .highlight,
+.article .content-article .highlight,
+.article-body .content-article .highlight,
+.article-content .highlight,
+.post-content .highlight,
+.markdown-body .highlight {
+  background: #282c34 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  margin: 2em 0 !important;
+  padding-top: 50px !important;
+  padding-bottom: 20px !important;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  overflow: visible !important;
+}
+.content-article .highlight:before,
+.article .content-article .highlight:before,
+.article-body .content-article .highlight:before,
+.article-content .highlight:before,
+.post-content .highlight:before,
+.markdown-body .highlight:before {
+  content: " ";
+  position: absolute;
+  top: 15px !important;
+  left: 15px !important;
+  margin: 0 !important;
+  width: 12px;
+  height: 12px;
+  background: #fc625d;
+  border-radius: 50%;
+  box-shadow: 20px 0 0 #fdbc40, 40px 0 0 #35cd4b;
+  z-index: 10;
+}
+.content-article .highlight ul,
+.content-article .highlight ol,
+.article .content-article .highlight ul,
+.article .content-article .highlight ol,
+.article-body .content-article .highlight ul,
+.article-body .content-article .highlight ol,
+.article-content .highlight ul,
+.article-content .highlight ol,
+.post-content .highlight ul,
+.post-content .highlight ol,
+.markdown-body .highlight ul,
+.markdown-body .highlight ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.content-article .highlight li,
+.article .content-article .highlight li,
+.article-body .content-article .highlight li,
+.article-content .highlight li,
+.post-content .highlight li,
+.markdown-body .highlight li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  font-weight: normal !important;
+}
+.content-article .highlight li:before,
+.article .content-article .highlight li:before,
+.article-body .content-article .highlight li:before,
+.article-content .highlight li:before,
+.post-content .highlight li:before,
+.markdown-body .highlight li:before {
+  content: none !important;
+  display: none !important;
+}
+.content-article .highlight li:hover,
+.article .content-article .highlight li:hover,
+.article-body .content-article .highlight li:hover,
+.article-content .highlight li:hover,
+.post-content .highlight li:hover,
+.markdown-body .highlight li:hover {
+  transform: none !important;
+  background: transparent !important;
+}
+.content-article .highlight table,
+.article .content-article .highlight table,
+.article-body .content-article .highlight table,
+.article-content .highlight table,
+.post-content .highlight table,
+.markdown-body .highlight table {
+  margin: 0;
+  width: auto !important;
+  border: none !important;
+  background: transparent !important;
+  overflow: auto !important;
+  display: block !important;
+}
+.content-article .highlight table tr,
+.content-article .highlight table td,
+.content-article .highlight table th,
+.article .content-article .highlight table tr,
+.article .content-article .highlight table td,
+.article .content-article .highlight table th,
+.article-body .content-article .highlight table tr,
+.article-body .content-article .highlight table td,
+.article-body .content-article .highlight table th,
+.article-content .highlight table tr,
+.article-content .highlight table td,
+.article-content .highlight table th,
+.post-content .highlight table tr,
+.post-content .highlight table td,
+.post-content .highlight table th,
+.markdown-body .highlight table tr,
+.markdown-body .highlight table td,
+.markdown-body .highlight table th {
+  background: transparent !important;
+  border: none !important;
+  padding: 0;
+}
+.content-article .highlight table tr:hover,
+.article .content-article .highlight table tr:hover,
+.article-body .content-article .highlight table tr:hover,
+.article-content .highlight table tr:hover,
+.post-content .highlight table tr:hover,
+.markdown-body .highlight table tr:hover {
+  background: transparent !important;
+}
+.content-article .highlight .gutter,
+.article .content-article .highlight .gutter,
+.article-body .content-article .highlight .gutter,
+.article-content .highlight .gutter,
+.post-content .highlight .gutter,
+.markdown-body .highlight .gutter {
+  color: rgba(255, 255, 255, 0.4) !important;
+  padding: 0 15px !important;
+  text-align: right;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  vertical-align: top;
+}
+.content-article .highlight .code,
+.article .content-article .highlight .code,
+.article-body .content-article .highlight .code,
+.article-content .highlight .code,
+.post-content .highlight .code,
+.markdown-body .highlight .code {
+  padding: 0 15px !important;
+  vertical-align: top;
+  color: #abb2bf;
+}
+.content-article .highlight pre,
+.article .content-article .highlight pre,
+.article-body .content-article .highlight pre,
+.article-content .highlight pre,
+.post-content .highlight pre,
+.markdown-body .highlight pre {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: inherit;
+  border: none;
+}
+.content-article .highlight .btn-copy,
+.article .content-article .highlight .btn-copy,
+.article-body .content-article .highlight .btn-copy,
+.article-content .highlight .btn-copy,
+.post-content .highlight .btn-copy,
+.markdown-body .highlight .btn-copy {
+  top: 6px !important;
+  right: 6px !important;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.content-article .highlight .btn-copy:hover,
+.article .content-article .highlight .btn-copy:hover,
+.article-body .content-article .highlight .btn-copy:hover,
+.article-content .highlight .btn-copy:hover,
+.post-content .highlight .btn-copy:hover,
+.markdown-body .highlight .btn-copy:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+.content-article .content-article,
+.article .content-article .content-article,
+.article-body .content-article .content-article,
+.article-content .content-article,
+.post-content .content-article,
+.markdown-body .content-article {
+  padding-left: 1.2em;
+}
+@media (max-width: 768px) {
+  .content-article,
+  .article .content-article,
+  .article-body .content-article,
+  .article-content,
+  .post-content,
+  .markdown-body {
+    font-size: 15px;
+  }
+  .content-article pre,
+  .article .content-article pre,
+  .article-body .content-article pre,
+  .article-content pre,
+  .post-content pre,
+  .markdown-body pre {
+    font-size: 12px;
   }
 }
